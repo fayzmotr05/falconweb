@@ -4,6 +4,7 @@ import { motion, useScroll, useTransform, useSpring } from 'framer-motion'
 import { gsap } from '@/animations/gsapConfig'
 import { Container, SectionWrapper, SplitText } from '@/components/common'
 import { TIMELINE } from '@/constants/content'
+import { useReducedMotion } from '@/hooks/useReducedMotion'
 
 // Milestone Card Component
 function MilestoneCard({
@@ -127,11 +128,12 @@ export default function TimelineSection() {
   const containerRef = useRef<HTMLDivElement>(null)
   const pathRef = useRef<SVGPathElement>(null)
   const [activeIndex, setActiveIndex] = useState(0)
+  const { shouldReduceAnimations } = useReducedMotion()
 
-  // Scroll progress for this section
+  // Scroll progress for this section - track when section enters and leaves viewport
   const { scrollYProgress } = useScroll({
     target: sectionRef,
-    offset: ['start start', 'end end'],
+    offset: ['start end', 'end start'],
   })
 
   const smoothProgress = useSpring(scrollYProgress, {
@@ -151,8 +153,21 @@ export default function TimelineSection() {
     ]
   )
 
+  // Update active index based on scroll progress through the section
   useEffect(() => {
-    if (!sectionRef.current || !pathRef.current) return
+    const unsubscribe = scrollYProgress.on('change', (progress) => {
+      const newIndex = Math.min(
+        Math.floor(progress * TIMELINE.length),
+        TIMELINE.length - 1
+      )
+      setActiveIndex(newIndex)
+    })
+    return () => unsubscribe()
+  }, [scrollYProgress])
+
+  // Animate path drawing based on scroll
+  useEffect(() => {
+    if (!pathRef.current) return
 
     const path = pathRef.current
     const pathLength = path.getTotalLength()
@@ -163,75 +178,55 @@ export default function TimelineSection() {
       strokeDashoffset: pathLength,
     })
 
-    // Create pinned scroll animation
-    const ctx = gsap.context(() => {
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: 'top top',
-          end: '+=100%',
-          scrub: 0.5,
-          pin: true,
-          anticipatePin: 1,
-          pinSpacing: true,
-          onUpdate: (self) => {
-            // Calculate which milestone is active based on scroll progress
-            const newIndex = Math.min(
-              Math.floor(self.progress * TIMELINE.length),
-              TIMELINE.length - 1
-            )
-            setActiveIndex(newIndex)
-          },
-        },
-      })
-
-      // Animate path drawing
-      tl.to(path, {
-        strokeDashoffset: 0,
-        ease: 'none',
+    // Update path on scroll progress change
+    const unsubscribe = smoothProgress.on('change', (progress) => {
+      gsap.set(path, {
+        strokeDashoffset: pathLength * (1 - progress),
       })
     })
 
-    return () => ctx.revert()
-  }, [])
+    return () => unsubscribe()
+  }, [smoothProgress])
 
   return (
-    <SectionWrapper ref={sectionRef} id="about" spacing="sm" className="min-h-screen !overflow-visible">
+    <SectionWrapper ref={sectionRef} id="about" spacing="lg" className="!overflow-visible">
       {/* Animated background */}
       <motion.div
         className="absolute inset-0 pointer-events-none"
         style={{ background: bgGradient }}
       />
 
-      {/* Floating year numbers in background */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {TIMELINE.map((item, index) => (
-          <motion.div
-            key={`bg-${item.year}`}
-            className="absolute text-[200px] font-bold text-navy-800/20 select-none"
-            style={{
-              left: `${15 + index * 20}%`,
-              top: `${10 + (index % 3) * 30}%`,
-            }}
-            animate={{
-              y: [0, -20, 0],
-              opacity: activeIndex === index ? 0.15 : 0.05,
-            }}
-            transition={{
-              y: {
-                duration: 4 + index,
-                repeat: Infinity,
-                ease: 'easeInOut',
-              },
-              opacity: { duration: 0.5 },
-            }}
-          >
-            {item.year}
-          </motion.div>
-        ))}
-      </div>
+      {/* Floating year numbers in background - only on desktop for performance */}
+      {!shouldReduceAnimations && (
+        <div className="absolute inset-0 overflow-hidden pointer-events-none hidden md:block">
+          {TIMELINE.map((item, index) => (
+            <motion.div
+              key={`bg-${item.year}`}
+              className="absolute text-[200px] font-bold text-navy-800/20 select-none"
+              style={{
+                left: `${15 + index * 20}%`,
+                top: `${10 + (index % 3) * 30}%`,
+              }}
+              animate={{
+                y: [0, -20, 0],
+                opacity: activeIndex === index ? 0.15 : 0.05,
+              }}
+              transition={{
+                y: {
+                  duration: 4 + index,
+                  repeat: Infinity,
+                  ease: 'easeInOut',
+                },
+                opacity: { duration: 0.5 },
+              }}
+            >
+              {item.year}
+            </motion.div>
+          ))}
+        </div>
+      )}
 
-      <div ref={containerRef} className="relative min-h-screen flex flex-col pt-24 pb-20 overflow-visible">
+      <div ref={containerRef} className="relative flex flex-col overflow-visible">
         <Container>
           {/* Section header */}
           <motion.div
@@ -367,23 +362,6 @@ export default function TimelineSection() {
             </div>
           </div>
 
-          {/* Scroll hint */}
-          <motion.div
-            className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center text-text-muted"
-            animate={{
-              opacity: activeIndex < TIMELINE.length - 1 ? 1 : 0,
-              y: [0, 10, 0],
-            }}
-            transition={{
-              opacity: { duration: 0.3 },
-              y: { duration: 1.5, repeat: Infinity, ease: 'easeInOut' },
-            }}
-          >
-            <span className="text-xs mb-2">Scroll to explore</span>
-            <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-            </svg>
-          </motion.div>
         </Container>
       </div>
     </SectionWrapper>

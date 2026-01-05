@@ -6,6 +6,7 @@ import { Container, Button, ParticleField, SplitText } from '@/components/common
 import AnimatedGrid from './AnimatedGrid'
 import DataFlowLines from './DataFlowLines'
 import { COMPANY_INFO } from '@/constants/content'
+import { useReducedMotion } from '@/hooks/useReducedMotion'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -17,6 +18,7 @@ export default function HeroSection() {
   const buttonsRef = useRef<HTMLDivElement>(null)
   const contactRef = useRef<HTMLDivElement>(null)
   const scrollIndicatorRef = useRef<HTMLDivElement>(null)
+  const { shouldReduceAnimations } = useReducedMotion()
 
   const [isLoaded, setIsLoaded] = useState(false)
 
@@ -107,32 +109,38 @@ export default function HeroSection() {
       ref={sectionRef}
       className="relative min-h-screen flex items-center justify-center overflow-hidden bg-navy-950"
     >
-      {/* Layer 1: Particle field (slowest parallax) */}
+      {/* Layer 1: Particle field - reduced on mobile for performance */}
       <div className="absolute inset-0 z-0">
         <ParticleField
-          particleCount={100}
+          particleCount={shouldReduceAnimations ? 20 : 100}
           colors={['#00d4ff', '#a855f7', '#22c55e']}
-          connectionDistance={120}
-          speed={0.3}
+          connectionDistance={shouldReduceAnimations ? 80 : 120}
+          speed={shouldReduceAnimations ? 0.2 : 0.3}
         />
       </div>
 
-      {/* Layer 2: Gradient orbs (medium parallax) */}
+      {/* Layer 2: Gradient orbs - simplified blur on mobile */}
       <div className="absolute inset-0 z-[1] pointer-events-none overflow-hidden">
-        <div className="absolute top-1/4 left-1/4 w-[600px] h-[600px] bg-neon-cyan/10 rounded-full blur-[150px] animate-float" />
-        <div className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-neon-purple/10 rounded-full blur-[120px] animate-float" style={{ animationDelay: '-3s' }} />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-neon-green/5 rounded-full blur-[100px] animate-pulse" />
+        <div className={`absolute top-1/4 left-1/4 w-[600px] h-[600px] bg-neon-cyan/10 rounded-full ${shouldReduceAnimations ? 'blur-[80px]' : 'blur-[150px] animate-float'}`} />
+        <div className={`absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-neon-purple/10 rounded-full ${shouldReduceAnimations ? 'blur-[60px]' : 'blur-[120px] animate-float'}`} style={{ animationDelay: '-3s' }} />
+        {!shouldReduceAnimations && (
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-neon-green/5 rounded-full blur-[100px] animate-pulse" />
+        )}
       </div>
 
-      {/* Layer 3: Animated grid (fast parallax) */}
-      <div className="absolute inset-0 z-[2]">
-        <AnimatedGrid />
-      </div>
+      {/* Layer 3: Animated grid - only on desktop */}
+      {!shouldReduceAnimations && (
+        <div className="absolute inset-0 z-[2]">
+          <AnimatedGrid />
+        </div>
+      )}
 
-      {/* Layer 4: Data flow lines */}
-      <div className="absolute inset-0 z-[3]">
-        <DataFlowLines />
-      </div>
+      {/* Layer 4: Data flow lines - only on desktop */}
+      {!shouldReduceAnimations && (
+        <div className="absolute inset-0 z-[3]">
+          <DataFlowLines />
+        </div>
+      )}
 
       {/* Layer 5: Content (fixed until scroll) */}
       <Container className="relative z-10 pt-24 pb-16">

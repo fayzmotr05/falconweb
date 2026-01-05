@@ -4,6 +4,7 @@ import { motion } from 'framer-motion'
 import { gsap } from '@/animations/gsapConfig'
 import { Container, SplitText } from '@/components/common'
 import { SERVICES } from '@/constants/content'
+import { useReducedMotion } from '@/hooks/useReducedMotion'
 
 // Service icon paths for SVG stroke animation
 const iconPaths: Record<string, string[]> = {
@@ -53,10 +54,12 @@ function ServiceSlide({
   service,
   index,
   isActive,
+  reduceAnimations,
 }: {
   service: { key: string; icon: string }
   index: number
   isActive: boolean
+  reduceAnimations: boolean
 }) {
   const { t } = useTranslation()
   const iconRef = useRef<SVGSVGElement>(null)
@@ -99,30 +102,32 @@ function ServiceSlide({
         }}
       />
 
-      {/* Floating particles */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {[...Array(20)].map((_, i) => (
-          <motion.div
-            key={i}
-            className="absolute w-1 h-1 rounded-full"
-            style={{
-              background: accentColor,
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-            }}
-            animate={{
-              y: [0, -100, 0],
-              opacity: [0, 1, 0],
-            }}
-            transition={{
-              duration: 3 + Math.random() * 2,
-              repeat: Infinity,
-              delay: Math.random() * 2,
-              ease: 'easeInOut',
-            }}
-          />
-        ))}
-      </div>
+      {/* Floating particles - reduced on mobile for performance */}
+      {!reduceAnimations && (
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          {[...Array(8)].map((_, i) => (
+            <motion.div
+              key={i}
+              className="absolute w-1 h-1 rounded-full"
+              style={{
+                background: accentColor,
+                left: `${Math.random() * 100}%`,
+                top: `${Math.random() * 100}%`,
+              }}
+              animate={{
+                y: [0, -100, 0],
+                opacity: [0, 1, 0],
+              }}
+              transition={{
+                duration: 3 + Math.random() * 2,
+                repeat: Infinity,
+                delay: Math.random() * 2,
+                ease: 'easeInOut',
+              }}
+            />
+          ))}
+        </div>
+      )}
 
       <Container>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
@@ -140,8 +145,8 @@ function ServiceSlide({
                 boxShadow: isActive ? `0 0 60px ${accentColor}40` : 'none',
               }}
             >
-              {/* Pulsing ring */}
-              {isActive && (
+              {/* Pulsing ring - disabled on mobile for performance */}
+              {isActive && !reduceAnimations && (
                 <motion.div
                   className="absolute inset-0 rounded-3xl border-2"
                   style={{ borderColor: accentColor }}
@@ -213,12 +218,12 @@ function ServiceSlide({
               )}
             </div>
 
-            {/* Description */}
+            {/* Description - simplified animation on mobile */}
             <motion.p
               className="text-lg md:text-xl text-text-secondary leading-relaxed max-w-lg mx-auto lg:mx-0"
-              initial={{ filter: 'blur(10px)', opacity: 0 }}
-              animate={isActive ? { filter: 'blur(0px)', opacity: 1 } : { filter: 'blur(10px)', opacity: 0 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
+              initial={{ opacity: 0 }}
+              animate={isActive ? { opacity: 1 } : { opacity: 0 }}
+              transition={{ duration: reduceAnimations ? 0.3 : 0.6, delay: reduceAnimations ? 0.2 : 0.4 }}
             >
               {t(`services.${service.key}.description`)}
             </motion.p>
@@ -256,6 +261,9 @@ export default function ServicesSection() {
   const sectionRef = useRef<HTMLElement>(null)
   const containerRef = useRef<HTMLDivElement>(null)
   const [activeIndex, setActiveIndex] = useState(0)
+  const touchStartX = useRef(0)
+  const touchEndX = useRef(0)
+  const { shouldReduceAnimations } = useReducedMotion()
 
   // GSAP handles ALL scroll-based horizontal movement (no Framer Motion conflict)
   useEffect(() => {
@@ -288,11 +296,47 @@ export default function ServicesSection() {
     return () => ctx.revert()
   }, [])
 
+  // Touch swipe handlers for mobile horizontal navigation
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX
+  }
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    touchEndX.current = e.touches[0].clientX
+  }
+
+  const handleTouchEnd = () => {
+    const swipeDistance = touchStartX.current - touchEndX.current
+    const minSwipeDistance = 50 // Minimum swipe distance to trigger navigation
+
+    if (Math.abs(swipeDistance) < minSwipeDistance) return
+
+    if (!sectionRef.current) return
+
+    const sectionTop = sectionRef.current.offsetTop
+    const scrollPerService = window.innerHeight // Each service takes 100vh of scroll
+
+    if (swipeDistance > 0) {
+      // Swiped left - go to next service
+      const targetIndex = Math.min(activeIndex + 1, SERVICES.length - 1)
+      const targetScroll = sectionTop + targetIndex * scrollPerService
+      window.scrollTo({ top: targetScroll, behavior: 'smooth' })
+    } else {
+      // Swiped right - go to previous service
+      const targetIndex = Math.max(activeIndex - 1, 0)
+      const targetScroll = sectionTop + targetIndex * scrollPerService
+      window.scrollTo({ top: targetScroll, behavior: 'smooth' })
+    }
+  }
+
   return (
     <section
       ref={sectionRef}
       id="services"
-      className="relative bg-navy-950 h-screen"
+      className="relative bg-navy-950 h-screen touch-pan-y"
+      onTouchStart={handleTouchStart}
+      onTouchMove={handleTouchMove}
+      onTouchEnd={handleTouchEnd}
     >
       {/* Section header - absolute within pinned container */}
       <div className="absolute top-0 left-0 right-0 z-10 pt-24 pb-8 bg-gradient-to-b from-navy-950 via-navy-950/90 to-transparent pointer-events-none">
@@ -333,6 +377,7 @@ export default function ServicesSection() {
               service={service}
               index={index}
               isActive={index === activeIndex}
+              reduceAnimations={shouldReduceAnimations}
             />
           ))}
         </div>
@@ -398,10 +443,17 @@ export default function ServicesSection() {
           y: { duration: 1.5, repeat: Infinity, ease: 'easeInOut' },
         }}
       >
-        <span className="text-xs mb-2">Scroll to explore</span>
-        <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-        </svg>
+        <span className="text-xs mb-2 hidden md:block">Scroll to explore</span>
+        <span className="text-xs mb-2 md:hidden">Swipe or scroll to explore</span>
+        <div className="flex items-center gap-2">
+          {/* Swipe left icon for mobile */}
+          <svg className="w-5 h-5 md:hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 16l-4-4m0 0l4-4m-4 4h18" />
+          </svg>
+          <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+          </svg>
+        </div>
       </motion.div>
     </section>
   )

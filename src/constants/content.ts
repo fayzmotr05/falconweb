@@ -10,10 +10,10 @@ export const COMPANY_INFO = {
 } as const
 
 export const STATS = [
-  { key: 'clients', value: 200, suffix: '+' },
-  { key: 'trucks', value: 1000, suffix: '+' },
-  { key: 'years', value: 6, suffix: '+' },
-  { key: 'team', value: 30, suffix: '+' },
+  { key: 'clients', value: 300, suffix: '+' },
+  { key: 'trucks', value: 1500, suffix: '+' },
+  { key: 'years', value: 7, suffix: '+' },
+  { key: 'team', value: 50, suffix: '+' },
 ] as const
 
 export const TIMELINE = [
@@ -34,7 +34,7 @@ export const SERVICES = [
 ] as const
 
 export const PLATFORMS = [
-  { key: 'sba', name: 'SBA ELD' },
+  { key: 'sba', name: 'Clear Path ELD' },
   { key: 'securePath', name: 'Secure Path ELD' },
 ] as const
 

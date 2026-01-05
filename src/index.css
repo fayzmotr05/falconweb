@@ -291,3 +291,59 @@
     scroll-behavior: auto !important;
   }
 }
+
+/* ===== MOBILE PERFORMANCE OPTIMIZATIONS ===== */
+@media (max-width: 768px) {
+  /* Reduce blur on mobile for better performance */
+  .blur-\[150px\] {
+    filter: blur(60px) !important;
+  }
+
+  .blur-\[120px\] {
+    filter: blur(50px) !important;
+  }
+
+  .blur-\[100px\] {
+    filter: blur(40px) !important;
+  }
+
+  /* Disable heavy animations on mobile */
+  .animate-float {
+    animation: none !important;
+  }
+
+  .animate-pulse-glow {
+    animation: none !important;
+  }
+
+  /* Add CSS containment for better performance */
+  section {
+    contain: layout style;
+  }
+
+  /* Optimize backdrop blur on mobile */
+  .backdrop-blur-sm {
+    backdrop-filter: blur(4px) !important;
+  }
+
+  .backdrop-blur-md {
+    backdrop-filter: blur(6px) !important;
+  }
+
+  .backdrop-blur-lg {
+    backdrop-filter: blur(8px) !important;
+  }
+}
+
+/* Touch device specific optimizations */
+@media (hover: none) and (pointer: coarse) {
+  /* Disable hover effects that cause repaints */
+  .group:hover .group-hover\:scale-105 {
+    transform: none !important;
+  }
+
+  /* Simplify transitions */
+  * {
+    transition-duration: 0.2s !important;
+  }
+}
