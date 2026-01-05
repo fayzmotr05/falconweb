@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 import { motion, AnimatePresence } from 'framer-motion'
 import { cn } from '@/lib/utils'
-import { Container, Button } from '@/components/common'
+import { Container, Button, FalconLogo } from '@/components/common'
 import { languages, type LanguageCode } from '@/i18n/config'
 import { COMPANY_INFO } from '@/constants/content'
 
@@ -46,9 +46,13 @@ export default function Header() {
         <nav className="flex items-center justify-between">
           {/* Logo */}
           <a href="#" className="flex items-center gap-2 group">
-            <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-neon-cyan to-neon-cyan-dark flex items-center justify-center font-bold text-navy-950 text-xl transition-transform group-hover:scale-105">
-              F
-            </div>
+            <motion.div
+              whileHover={{ scale: 1.05, rotate: 3 }}
+              whileTap={{ scale: 0.95 }}
+              transition={{ type: 'spring', stiffness: 400, damping: 17 }}
+            >
+              <FalconLogo size={40} animated={false} />
+            </motion.div>
             <span className="text-xl font-bold text-text-primary hidden sm:block">
               {COMPANY_INFO.name}
             </span>
