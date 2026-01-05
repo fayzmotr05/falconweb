@@ -152,7 +152,7 @@ export default function HeroSection() {
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-neon-green opacity-75" />
                 <span className="relative inline-flex rounded-full h-3 w-3 bg-neon-green" />
               </span>
-              Trusted by 200+ trucking companies
+              Trusted by 300+ trucking companies
             </span>
           </div>
 
