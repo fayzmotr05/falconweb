@@ -39,7 +39,7 @@
     },
     "2024": {
       "title": "Own Platforms",
-      "description": "Launched SBA ELD and Secure Path ELD - our proprietary platforms"
+      "description": "Launched Clear Path ELD and Secure Path ELD - our proprietary platforms"
     },
     "2025": {
       "title": "Industry Leader",
@@ -78,7 +78,7 @@
     "title": "Our Platforms",
     "subtitle": "Proprietary technology built for modern trucking",
     "sba": {
-      "title": "SBA ELD",
+      "title": "Clear Path ELD",
       "description": "Advanced ELD solution with real-time tracking and compliance features"
     },
     "securePath": {

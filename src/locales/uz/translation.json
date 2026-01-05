@@ -39,7 +39,7 @@
     },
     "2024": {
       "title": "O'z platformalarimiz",
-      "description": "SBA ELD va Secure Path ELD - o'z platformalarimizni ishga tushirdik"
+      "description": "Clear Path ELD va Secure Path ELD - o'z platformalarimizni ishga tushirdik"
     },
     "2025": {
       "title": "Soha yetakchisi",
@@ -78,7 +78,7 @@
     "title": "Bizning platformalarimiz",
     "subtitle": "Zamonaviy yuk tashish uchun o'z texnologiyalarimiz",
     "sba": {
-      "title": "SBA ELD",
+      "title": "Clear Path ELD",
       "description": "Real vaqt kuzatuvi va muvofiqlik funksiyalari bilan ilg'or ELD yechimi"
     },
     "securePath": {

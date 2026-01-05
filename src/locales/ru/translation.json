@@ -39,7 +39,7 @@
     },
     "2024": {
       "title": "Собственные платформы",
-      "description": "Запустили SBA ELD и Secure Path ELD - наши собственные платформы"
+      "description": "Запустили Clear Path ELD и Secure Path ELD - наши собственные платформы"
     },
     "2025": {
       "title": "Лидер отрасли",
@@ -78,7 +78,7 @@
     "title": "Наши платформы",
     "subtitle": "Собственные технологии для современных грузоперевозок",
     "sba": {
-      "title": "SBA ELD",
+      "title": "Clear Path ELD",
       "description": "Продвинутое ELD решение с отслеживанием в реальном времени"
     },
     "securePath": {
