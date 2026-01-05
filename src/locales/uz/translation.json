@@ -1,0 +1,198 @@
+{
+  "nav": {
+    "services": "Xizmatlar",
+    "about": "Biz haqimizda",
+    "contact": "Aloqa",
+    "getConsultation": "Konsultatsiya olish"
+  },
+  "hero": {
+    "title": "Yuk tashish va Muvofiqlik",
+    "titleHighlight": "dunyosidagi hamkoringiz",
+    "subtitle": "Barcha 50 shtatdagi yuk tashish kompaniyalari uchun to'liq avtopark boshqaruvi, ELD yechimlari, dispetcherlik xizmatlari va muvofiqlik yordami.",
+    "cta": {
+      "consultation": "Bepul konsultatsiya",
+      "learnMore": "Batafsil"
+    }
+  },
+  "stats": {
+    "title": "Falcon Team raqamlarda",
+    "subtitle": "Butun Amerika bo'ylab yuk tashish kompaniyalari bizga ishonadi",
+    "clients": "Mijozlar",
+    "trucks": "Xizmatdagi yukmashinalar",
+    "years": "Yillik tajriba",
+    "team": "Jamoa a'zolari"
+  },
+  "timeline": {
+    "title": "Bizning yo'limiz",
+    "subtitle": "Kichik jamoadan milliy miqyosdagi texnologik hamkorga",
+    "2018": {
+      "title": "Kompaniya tashkil etildi",
+      "description": "Falcon Team yuk tashish muvofiqligini inqilob qilish maqsadida tashkil etildi"
+    },
+    "2020": {
+      "title": "ELD platformasi ishga tushirildi",
+      "description": "Avtopark boshqaruvi uchun birinchi ELD yechimimizni ishga tushirdik"
+    },
+    "2021": {
+      "title": "Xavfsizlik xizmatlari kengaytirildi",
+      "description": "DOT muvofiqlik va xavfsizlik auditlarini qo'shdik"
+    },
+    "2024": {
+      "title": "O'z platformalarimiz",
+      "description": "SBA ELD va Secure Path ELD - o'z platformalarimizni ishga tushirdik"
+    },
+    "2025": {
+      "title": "Soha yetakchisi",
+      "description": "Butun mamlakat bo'ylab yuk tashish kompaniyalari uchun to'liq autsorsing yechimlari"
+    }
+  },
+  "services": {
+    "title": "Bizning xizmatlarimiz",
+    "subtitle": "Yuk tashish biznesingiz uchun kompleks yechimlar",
+    "eld": {
+      "title": "ELD boshqaruvi",
+      "description": "Professional o'rnatish, 24/7 monitoring va 1 daqiqalik javob vaqti bilan tezkor yordam"
+    },
+    "safety": {
+      "title": "Xavfsizlik va Muvofiqlik",
+      "description": "DOT auditlariga tayyorgarlik, HOS tahlili, DQ fayllarini boshqarish"
+    },
+    "dispatch": {
+      "title": "Dispetcherlik xizmatlari",
+      "description": "Yuk qidirish, brokerlar bilan aloqa, hujjatlar va billing boshqaruvi"
+    },
+    "fleet": {
+      "title": "Avtopark boshqaruvi",
+      "description": "To'liq avtopark nazorati, analitika, koordinatsiya va optimallashtirish"
+    },
+    "ifta": {
+      "title": "IFTA va Ruxsatnomalar",
+      "description": "KYU, NY HUT hisoblari, IFTA topshirish va ruxsatnomalar boshqaruvi"
+    },
+    "integrations": {
+      "title": "IT integratsiyalar",
+      "description": "Highway, Macropoint, Trucker Tools, Project44 va boshqa platformalar"
+    }
+  },
+  "platforms": {
+    "title": "Bizning platformalarimiz",
+    "subtitle": "Zamonaviy yuk tashish uchun o'z texnologiyalarimiz",
+    "sba": {
+      "title": "SBA ELD",
+      "description": "Real vaqt kuzatuvi va muvofiqlik funksiyalari bilan ilg'or ELD yechimi"
+    },
+    "securePath": {
+      "title": "Secure Path ELD",
+      "description": "Kuchaytirilgan xavfsizlik va analitika bilan korporativ darajadagi ELD platformasi"
+    },
+    "integrations": {
+      "title": "Uchinchi tomon integratsiyalari",
+      "items": ["Highway", "Macropoint", "Trucker Tools", "Project44"]
+    }
+  },
+  "clients": {
+    "title": "Kimga xizmat ko'rsatamiz",
+    "subtitle": "Har qanday turdagi yuk tashish biznesi uchun individual yechimlar",
+    "ownerOperator": {
+      "title": "Yakka operatorlar",
+      "description": "Ishonchli muvofiqlik va dispetcherlik yordamini qidirayotgan individual yuk mashina egalari"
+    },
+    "fleet": {
+      "title": "Avtopark kompaniyalari",
+      "description": "Kompleks avtopark boshqaruviga muhtoj 5-100+ yuk mashinali kompaniyalar"
+    },
+    "centralAsian": {
+      "title": "Markaziy Osiyo tadbirkorlari",
+      "description": "AQSh yuk tashish sohasidagi o'sib borayotgan Markaziy Osiyo tadbirkorlariga yordam"
+    },
+    "caseStudy": {
+      "title": "Muvaffaqiyat tarixi",
+      "description": "IFTA jarimani qanday kamaytirdik",
+      "from": "$40,000",
+      "to": "$8,000",
+      "savings": "80% tejash"
+    }
+  },
+  "mission": {
+    "title": "Bizning missiya va qadriyatlarimiz",
+    "subtitle": "Yuk tashish texnologiyalarida mukammallik orqali ishonch qurish",
+    "values": {
+      "speed": {
+        "title": "Tezlik",
+        "description": "1 daqiqalik javob vaqti, 24/7 mavjudlik"
+      },
+      "honesty": {
+        "title": "Halollik",
+        "description": "Shaffof narxlar, yashirin to'lovlar yo'q"
+      },
+      "responsibility": {
+        "title": "Mas'uliyat",
+        "description": "Muvofiqligingizni o'z zimmamizga olamiz"
+      },
+      "innovation": {
+        "title": "Innovatsiya",
+        "description": "Zamonaviy texnologik yechimlar"
+      }
+    }
+  },
+  "whyUs": {
+    "title": "Nima uchun Falcon Team?",
+    "subtitle": "Bizni ajratib turadigan afzalliklar",
+    "advantages": {
+      "support": {
+        "title": "24/7 qo'llab-quvvatlash",
+        "description": "1 daqiqagacha javob vaqti, doimo aloqada"
+      },
+      "platforms": {
+        "title": "O'z platformalarimiz",
+        "description": "Uchinchi tomon provayderlariga bog'liq emasmiz"
+      },
+      "automation": {
+        "title": "To'liq avtomatlashtirish",
+        "description": "Maksimal samaradorlik uchun optimallashtirilgan jarayonlar"
+      },
+      "security": {
+        "title": "Ma'lumotlar xavfsizligi",
+        "description": "Korporativ darajadagi himoya"
+      },
+      "experience": {
+        "title": "6+ yillik tajriba",
+        "description": "Sohadagi tasdiqlangan tajriba"
+      },
+      "quality": {
+        "title": "Sifat nazorati",
+        "description": "Ichki standartlar barqaror xizmatni ta'minlaydi"
+      }
+    }
+  },
+  "cta": {
+    "title": "Biznesingizni rivojlantirishga tayyormisiz?",
+    "subtitle": "Falcon Team sizning yuk tashish operatsiyalaringizni qanday optimallashtirishini muhokama qilaylik",
+    "form": {
+      "name": "To'liq ism",
+      "email": "Email manzil",
+      "phone": "Telefon raqam",
+      "company": "Kompaniya nomi",
+      "message": "Xabar",
+      "submit": "Xabar yuborish",
+      "submitting": "Yuborilmoqda...",
+      "success": "Rahmat! Tez orada siz bilan bog'lanamiz.",
+      "error": "Xatolik yuz berdi. Qaytadan urinib ko'ring."
+    },
+    "contact": {
+      "phone": "Bizga qo'ng'iroq qiling",
+      "instagram": "Obuna bo'ling"
+    }
+  },
+  "footer": {
+    "company": "Falcon Team",
+    "tagline": "Yuk tashish va muvofiqlik dunyosidagi hamkoringiz",
+    "ceo": "Bosh direktor",
+    "copyright": "Barcha huquqlar himoyalangan.",
+    "links": {
+      "services": "Xizmatlar",
+      "about": "Biz haqimizda",
+      "contact": "Aloqa"
+    }
+  }
+}

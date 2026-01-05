@@ -1,0 +1,198 @@
+{
+  "nav": {
+    "services": "Services",
+    "about": "About",
+    "contact": "Contact",
+    "getConsultation": "Get Consultation"
+  },
+  "hero": {
+    "title": "Your Partner in the World of",
+    "titleHighlight": "Trucking & Compliance",
+    "subtitle": "Complete fleet management, ELD solutions, dispatch services, and compliance support for trucking companies across all 50 states.",
+    "cta": {
+      "consultation": "Get Free Consultation",
+      "learnMore": "Learn More"
+    }
+  },
+  "stats": {
+    "title": "Falcon Team in Numbers",
+    "subtitle": "Trusted by trucking companies across the United States",
+    "clients": "Clients",
+    "trucks": "Trucks Under Service",
+    "years": "Years Experience",
+    "team": "Team Members"
+  },
+  "timeline": {
+    "title": "Our Journey",
+    "subtitle": "From a small team to a nationwide trucking technology partner",
+    "2018": {
+      "title": "Company Founded",
+      "description": "Falcon Team was established with a vision to revolutionize trucking compliance"
+    },
+    "2020": {
+      "title": "ELD Platform Launch",
+      "description": "Launched our first proprietary ELD solution for fleet management"
+    },
+    "2021": {
+      "title": "Safety Services Expansion",
+      "description": "Expanded services to include comprehensive DOT compliance and safety audits"
+    },
+    "2024": {
+      "title": "Own Platforms",
+      "description": "Launched SBA ELD and Secure Path ELD - our proprietary platforms"
+    },
+    "2025": {
+      "title": "Industry Leader",
+      "description": "Full outsourcing solutions for trucking companies nationwide"
+    }
+  },
+  "services": {
+    "title": "Our Services",
+    "subtitle": "Comprehensive solutions for your trucking business",
+    "eld": {
+      "title": "ELD Management",
+      "description": "Professional installation, 24/7 monitoring, and rapid support with 1-minute response time"
+    },
+    "safety": {
+      "title": "Safety & Compliance",
+      "description": "DOT audits preparation, HOS analysis, DQ files management, and regulatory compliance"
+    },
+    "dispatch": {
+      "title": "Dispatch Services",
+      "description": "Load search, broker communication, document handling, and billing management"
+    },
+    "fleet": {
+      "title": "Fleet Management",
+      "description": "Complete fleet control, analytics, coordination, and optimization services"
+    },
+    "ifta": {
+      "title": "IFTA & Permits",
+      "description": "KYU, NY HUT calculations, IFTA submissions, and permit management"
+    },
+    "integrations": {
+      "title": "IT Integrations",
+      "description": "Highway, Macropoint, Trucker Tools, Project44 and other platform integrations"
+    }
+  },
+  "platforms": {
+    "title": "Our Platforms",
+    "subtitle": "Proprietary technology built for modern trucking",
+    "sba": {
+      "title": "SBA ELD",
+      "description": "Advanced ELD solution with real-time tracking and compliance features"
+    },
+    "securePath": {
+      "title": "Secure Path ELD",
+      "description": "Enterprise-grade ELD platform with enhanced security and analytics"
+    },
+    "integrations": {
+      "title": "Third-Party Integrations",
+      "items": ["Highway", "Macropoint", "Trucker Tools", "Project44"]
+    }
+  },
+  "clients": {
+    "title": "Who We Serve",
+    "subtitle": "Tailored solutions for every type of trucking business",
+    "ownerOperator": {
+      "title": "Owner-Operators",
+      "description": "Individual truck owners looking for reliable compliance and dispatch support"
+    },
+    "fleet": {
+      "title": "Fleet Companies",
+      "description": "Companies with 5-100+ trucks needing comprehensive fleet management"
+    },
+    "centralAsian": {
+      "title": "Central Asian Founders",
+      "description": "Supporting the growing community of Central Asian entrepreneurs in US trucking"
+    },
+    "caseStudy": {
+      "title": "Success Story",
+      "description": "How we helped reduce an IFTA fine from",
+      "from": "$40,000",
+      "to": "$8,000",
+      "savings": "80% Savings"
+    }
+  },
+  "mission": {
+    "title": "Our Mission & Values",
+    "subtitle": "Building trust through excellence in trucking technology",
+    "values": {
+      "speed": {
+        "title": "Speed",
+        "description": "1-minute response time, 24/7 availability"
+      },
+      "honesty": {
+        "title": "Honesty",
+        "description": "Transparent pricing, no hidden fees"
+      },
+      "responsibility": {
+        "title": "Responsibility",
+        "description": "We take ownership of your compliance"
+      },
+      "innovation": {
+        "title": "Innovation",
+        "description": "Cutting-edge technology solutions"
+      }
+    }
+  },
+  "whyUs": {
+    "title": "Why Choose Falcon Team?",
+    "subtitle": "The advantages that set us apart",
+    "advantages": {
+      "support": {
+        "title": "24/7 Support",
+        "description": "Response time up to 1 minute, always available"
+      },
+      "platforms": {
+        "title": "Own Platforms",
+        "description": "No dependency on third-party providers"
+      },
+      "automation": {
+        "title": "Full Automation",
+        "description": "Streamlined processes for maximum efficiency"
+      },
+      "security": {
+        "title": "Data Security",
+        "description": "Enterprise-grade protection for your data"
+      },
+      "experience": {
+        "title": "6+ Years Experience",
+        "description": "Proven track record in the industry"
+      },
+      "quality": {
+        "title": "Quality Control",
+        "description": "Internal standards ensure consistent service"
+      }
+    }
+  },
+  "cta": {
+    "title": "Ready to Grow Your Business?",
+    "subtitle": "Let's discuss how Falcon Team can help optimize your trucking operations",
+    "form": {
+      "name": "Full Name",
+      "email": "Email Address",
+      "phone": "Phone Number",
+      "company": "Company Name",
+      "message": "Message",
+      "submit": "Send Message",
+      "submitting": "Sending...",
+      "success": "Thank you! We'll contact you soon.",
+      "error": "Something went wrong. Please try again."
+    },
+    "contact": {
+      "phone": "Call Us",
+      "instagram": "Follow Us"
+    }
+  },
+  "footer": {
+    "company": "Falcon Team",
+    "tagline": "Your Partner in the World of Trucking and Compliance",
+    "ceo": "CEO",
+    "copyright": "All rights reserved.",
+    "links": {
+      "services": "Services",
+      "about": "About Us",
+      "contact": "Contact"
+    }
+  }
+}
