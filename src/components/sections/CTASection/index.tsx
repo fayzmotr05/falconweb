@@ -4,6 +4,7 @@ import { useForm } from 'react-hook-form'
 import { motion, useInView, AnimatePresence, useMotionValue, useSpring } from 'framer-motion'
 import { Container, SectionWrapper, SplitText } from '@/components/common'
 import { COMPANY_INFO } from '@/constants/content'
+import { useReducedMotion } from '@/hooks/useReducedMotion'
 
 interface FormData {
   name: string
@@ -479,6 +480,7 @@ export default function CTASection() {
   const sectionRef = useRef<HTMLDivElement>(null)
   const formRef = useRef<HTMLDivElement>(null)
   const isInView = useInView(formRef, { once: true, margin: '-100px' })
+  const { shouldReduceAnimations } = useReducedMotion()
 
   const {
     register,
@@ -517,16 +519,18 @@ export default function CTASection() {
   return (
     <SectionWrapper id="contact" spacing="xl">
       <div ref={sectionRef} className="relative min-h-screen">
-        {/* Particle background */}
-        <div className="absolute inset-0 overflow-hidden">
-          <ParticleBackground />
-        </div>
+        {/* Particle background - only on desktop for performance */}
+        {!shouldReduceAnimations && (
+          <div className="absolute inset-0 overflow-hidden">
+            <ParticleBackground />
+          </div>
+        )}
 
-        {/* Gradient orbs */}
+        {/* Gradient orbs - scaled down on mobile, hidden animations */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <motion.div
-            className="absolute top-1/4 left-1/4 w-[600px] h-[600px] bg-neon-cyan/10 rounded-full blur-[150px]"
-            animate={{
+            className="absolute top-1/4 left-1/4 w-[280px] h-[280px] md:w-[600px] md:h-[600px] bg-neon-cyan/10 rounded-full blur-[80px] md:blur-[150px]"
+            animate={shouldReduceAnimations ? {} : {
               x: [0, 50, 0],
               y: [0, 30, 0],
               scale: [1, 1.2, 1],
@@ -534,8 +538,8 @@ export default function CTASection() {
             transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut' }}
           />
           <motion.div
-            className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-neon-purple/10 rounded-full blur-[120px]"
-            animate={{
+            className="absolute bottom-1/4 right-1/4 w-[240px] h-[240px] md:w-[500px] md:h-[500px] bg-neon-purple/10 rounded-full blur-[60px] md:blur-[120px]"
+            animate={shouldReduceAnimations ? {} : {
               x: [0, -40, 0],
               y: [0, -20, 0],
               scale: [1, 1.3, 1],
@@ -543,8 +547,8 @@ export default function CTASection() {
             transition={{ duration: 12, repeat: Infinity, ease: 'easeInOut', delay: 2 }}
           />
           <motion.div
-            className="absolute top-1/2 right-1/3 w-[400px] h-[400px] bg-neon-green/5 rounded-full blur-[100px]"
-            animate={{
+            className="hidden md:block absolute top-1/2 right-1/3 w-[400px] h-[400px] bg-neon-green/5 rounded-full blur-[100px]"
+            animate={shouldReduceAnimations ? {} : {
               x: [0, 30, 0],
               scale: [1, 1.1, 1],
             }}

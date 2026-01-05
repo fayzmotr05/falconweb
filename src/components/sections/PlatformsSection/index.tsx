@@ -248,7 +248,7 @@ function PlatformCard({
         flipOnView={false}
       >
         <div
-          className="relative bg-gradient-to-br from-navy-800/80 to-navy-900/80 border border-navy-700 rounded-3xl p-8 overflow-hidden transition-all duration-500"
+          className="relative bg-gradient-to-br from-navy-800/80 to-navy-900/80 border border-navy-700 rounded-3xl p-6 sm:p-8 overflow-hidden transition-all duration-500"
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
           style={{
@@ -386,7 +386,7 @@ export default function PlatformsSection() {
           </motion.div>
 
           {/* Platform cards */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 mb-16">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 mb-12 sm:mb-16">
             <PlatformCard platformKey="sba" accentColor="#00d4ff" index={0} />
             <PlatformCard platformKey="securePath" accentColor="#a855f7" index={1} />
           </div>

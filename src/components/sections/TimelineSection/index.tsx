@@ -44,7 +44,7 @@ function MilestoneCard({
       transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
     >
       <div
-        className={`relative bg-navy-800/50 backdrop-blur-sm border rounded-2xl p-6 md:p-8 overflow-hidden transition-all duration-500 ${
+        className={`relative bg-navy-800/50 backdrop-blur-sm border rounded-2xl p-4 sm:p-6 md:p-8 overflow-hidden transition-all duration-500 ${
           isActive
             ? 'border-neon-cyan/50 shadow-lg'
             : isPast
@@ -257,11 +257,11 @@ export default function TimelineSection() {
           </motion.div>
 
           {/* Progress indicator */}
-          <div className="flex justify-center gap-3 mb-6">
+          <div className="flex justify-center gap-2 sm:gap-3 mb-6">
             {TIMELINE.map((_, index) => (
               <motion.div
                 key={index}
-                className={`h-2 rounded-full transition-all duration-300 ${
+                className={`h-3 sm:h-2 rounded-full transition-all duration-300 cursor-pointer ${
                   index <= activeIndex ? 'bg-neon-cyan' : 'bg-navy-700'
                 }`}
                 animate={{
@@ -315,7 +315,7 @@ export default function TimelineSection() {
             </svg>
 
             {/* Timeline items */}
-            <div className="space-y-8 md:space-y-12">
+            <div className="space-y-6 sm:space-y-8 md:space-y-12">
               {TIMELINE.map((item, index) => (
                 <div
                   key={item.year}

@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next'
 import { motion, useInView } from 'framer-motion'
 import { Container, SectionWrapper, SplitText, AnimatedCounter, Card3D } from '@/components/common'
 import { CLIENT_SEGMENTS } from '@/constants/content'
+import { useReducedMotion } from '@/hooks/useReducedMotion'
 
 // Professional detailed SVG icons with multiple paths for visual richness
 const iconPaths: Record<string, string[]> = {
@@ -100,7 +101,7 @@ function ClientSegmentCard({
     >
       <Card3D glowColor={`${accentColor}40`} tiltIntensity={8} flipOnView={false}>
         <div
-          className="h-full bg-navy-800/30 backdrop-blur-sm border border-navy-700 rounded-2xl p-6 overflow-hidden transition-all duration-300"
+          className="h-full bg-navy-800/30 backdrop-blur-sm border border-navy-700 rounded-2xl p-4 sm:p-6 overflow-hidden transition-all duration-300"
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
           style={{
@@ -159,6 +160,7 @@ function CaseStudyShowcase() {
   const ref = useRef<HTMLDivElement>(null)
   const isInView = useInView(ref, { once: true, margin: '-100px' })
   const [showCelebration, setShowCelebration] = useState(false)
+  const { shouldReduceAnimations } = useReducedMotion()
 
   return (
     <motion.div
@@ -170,7 +172,7 @@ function CaseStudyShowcase() {
         if (isInView) setTimeout(() => setShowCelebration(true), 1500)
       }}
     >
-      <div className="relative bg-gradient-to-br from-navy-800/50 via-navy-900/50 to-navy-800/50 border border-neon-green/30 rounded-3xl p-8 md:p-12 overflow-hidden">
+      <div className="relative bg-gradient-to-br from-navy-800/50 via-navy-900/50 to-navy-800/50 border border-neon-green/30 rounded-3xl p-6 sm:p-8 md:p-12 overflow-hidden">
         {/* Animated background */}
         <motion.div
           className="absolute top-0 right-0 w-64 h-64 bg-neon-green/10 rounded-full blur-[100px]"
@@ -189,8 +191,8 @@ function CaseStudyShowcase() {
           transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
         />
 
-        {/* Celebration particles */}
-        {showCelebration && (
+        {/* Celebration particles - disabled on mobile for performance */}
+        {showCelebration && !shouldReduceAnimations && (
           <div className="absolute inset-0 pointer-events-none overflow-hidden">
             {[...Array(30)].map((_, i) => (
               <motion.div
@@ -341,7 +343,7 @@ export default function ClientsSection() {
         </motion.div>
 
         {/* Client segments */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 md:gap-8 mb-8 sm:mb-12">
           {CLIENT_SEGMENTS.map((segment, index) => (
             <ClientSegmentCard key={segment.key} segment={segment} index={index} />
           ))}

@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next'
 import { motion, useInView, AnimatePresence } from 'framer-motion'
 import { Container, SectionWrapper, SplitText } from '@/components/common'
 import { ADVANTAGES } from '@/constants/content'
+import { useReducedMotion } from '@/hooks/useReducedMotion'
 
 // Icon paths for stroke animation
 const iconPaths: Record<string, string[]> = {
@@ -319,6 +320,7 @@ export default function WhyUsSection() {
   const { t } = useTranslation()
   const [checkedItems, setCheckedItems] = useState<Set<number>>(new Set())
   const [showCelebration, setShowCelebration] = useState(false)
+  const { shouldReduceAnimations } = useReducedMotion()
 
   const handleCheck = (index: number) => {
     setCheckedItems((prev) => {
@@ -337,8 +339,8 @@ export default function WhyUsSection() {
   return (
     <SectionWrapper background="darker" spacing="lg">
       <div className="relative">
-        {/* Celebration particles */}
-        <CelebrationParticles show={showCelebration} />
+        {/* Celebration particles - disabled on mobile for performance */}
+        {!shouldReduceAnimations && <CelebrationParticles show={showCelebration} />}
 
         {/* Background decorations */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">

@@ -120,7 +120,7 @@ function StatCard({ stat, index }: { stat: { readonly key: string; readonly valu
         flipOnView={false}
       >
         <div
-          className="relative bg-navy-800/50 backdrop-blur-sm border border-navy-700 rounded-2xl p-6 md:p-8 text-center overflow-hidden transition-all duration-500"
+          className="relative bg-navy-800/50 backdrop-blur-sm border border-navy-700 rounded-2xl p-4 sm:p-6 md:p-8 text-center overflow-hidden transition-all duration-500"
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
           style={{
@@ -165,7 +165,7 @@ function StatCard({ stat, index }: { stat: { readonly key: string; readonly valu
           )}
 
           {/* Icon */}
-          <div className="relative inline-flex items-center justify-center w-20 h-20 rounded-xl bg-navy-700/50 text-neon-cyan mb-6 overflow-hidden">
+          <div className="relative inline-flex items-center justify-center w-16 h-16 sm:w-20 sm:h-20 rounded-xl bg-navy-700/50 text-neon-cyan mb-4 sm:mb-6 overflow-hidden">
             {/* Icon glow */}
             <motion.div
               className="absolute inset-0 rounded-xl"
@@ -179,7 +179,7 @@ function StatCard({ stat, index }: { stat: { readonly key: string; readonly valu
           </div>
 
           {/* Number with scramble effect */}
-          <div className="text-4xl md:text-5xl lg:text-6xl font-bold mb-3">
+          <div className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-2 sm:mb-3">
             <AnimatedCounter
               end={stat.value}
               suffix={stat.suffix}
@@ -274,7 +274,7 @@ export default function StatsSection() {
           </motion.div>
 
           {/* Stats grid */}
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 md:gap-8">
             {STATS.map((stat, index) => (
               <StatCard key={stat.key} stat={stat} index={index} />
             ))}

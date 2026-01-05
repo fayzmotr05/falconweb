@@ -88,8 +88,7 @@ function ServiceSlide({
 
   return (
     <motion.div
-      className="flex-shrink-0 flex items-center justify-center relative overflow-hidden"
-      style={{ width: '100vw', height: '100vh' }}
+      className="flex-shrink-0 flex items-center justify-center relative overflow-hidden w-full min-w-full h-full"
       initial={{ opacity: 0 }}
       animate={{ opacity: isActive ? 1 : 0.3 }}
       transition={{ duration: 0.5 }}
@@ -139,7 +138,7 @@ function ServiceSlide({
             transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
           >
             <div
-              className="relative w-48 h-48 md:w-64 md:h-64 lg:w-80 lg:h-80 rounded-3xl flex items-center justify-center"
+              className="relative w-32 h-32 sm:w-48 sm:h-48 md:w-64 md:h-64 lg:w-80 lg:h-80 rounded-3xl flex items-center justify-center"
               style={{
                 background: `linear-gradient(135deg, ${gradient.from}, ${gradient.to})`,
                 boxShadow: isActive ? `0 0 60px ${accentColor}40` : 'none',
@@ -193,7 +192,7 @@ function ServiceSlide({
           >
             {/* Service number */}
             <motion.span
-              className="inline-block text-8xl md:text-9xl font-bold opacity-10 mb-4"
+              className="inline-block text-5xl sm:text-6xl md:text-8xl lg:text-9xl font-bold opacity-10 mb-4"
               style={{ color: accentColor }}
             >
               0{index + 1}
@@ -307,7 +306,7 @@ export default function ServicesSection() {
 
   const handleTouchEnd = () => {
     const swipeDistance = touchStartX.current - touchEndX.current
-    const minSwipeDistance = 50 // Minimum swipe distance to trigger navigation
+    const minSwipeDistance = 80 // Minimum swipe distance to trigger navigation (prevent accidental)
 
     if (Math.abs(swipeDistance) < minSwipeDistance) return
 
@@ -364,12 +363,11 @@ export default function ServicesSection() {
       </div>
 
       {/* Horizontal scroll container - absolute within pinned container */}
-      <div className="absolute inset-0 overflow-hidden" style={{ width: '100vw', height: '100vh' }}>
+      <div className="absolute inset-0 overflow-hidden w-full h-full">
         {/* Regular div - GSAP handles horizontal movement via x transform */}
         <div
           ref={containerRef}
-          className="flex"
-          style={{ height: '100vh' }}
+          className="flex w-full h-full"
         >
           {SERVICES.map((service, index) => (
             <ServiceSlide
