@@ -14,8 +14,8 @@ interface FormData {
   message: string
 }
 
-// Google Apps Script Web App URL - Replace with your actual deployment URL
-const GOOGLE_SCRIPT_URL = 'YOUR_GOOGLE_APPS_SCRIPT_URL'
+// Google Apps Script Web App URL
+const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbz8VIL1vpDEMUSId-r43yNIl_6AK77-ssmPTmSxxlmkZKeFPco5gH5j57ljrTZ74BzL/exec'
 
 // Particle system for background
 function ParticleBackground() {

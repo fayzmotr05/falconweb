@@ -26,3 +26,6 @@ dist-ssr
 # Screenshots and temp files
 .playwright-mcp/
 *.pdf
+
+.vercel
+.env*.local
