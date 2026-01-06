@@ -164,15 +164,19 @@
 
 /* ===== UTILITY CLASSES ===== */
 @layer utilities {
-  /* Text gradients */
-  .text-gradient-cyan {
+  /* Text gradients - also apply to SplitType child spans */
+  .text-gradient-cyan,
+  .text-gradient-cyan .char,
+  .text-gradient-cyan .word {
     background: linear-gradient(135deg, var(--color-neon-cyan), var(--color-neon-cyan-light));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
 
-  .text-gradient-purple {
+  .text-gradient-purple,
+  .text-gradient-purple .char,
+  .text-gradient-purple .word {
     background: linear-gradient(135deg, var(--color-neon-purple), var(--color-neon-purple-light));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
