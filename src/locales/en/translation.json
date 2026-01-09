@@ -11,7 +11,8 @@
     "subtitle": "Complete fleet management, ELD solutions, dispatch services, and compliance support for trucking companies across all 50 states.",
     "cta": {
       "consultation": "Get Free Consultation",
-      "learnMore": "Learn More"
+      "learnMore": "Learn More",
+      "quote": "Get Quote"
     }
   },
   "stats": {
@@ -181,8 +182,14 @@
     },
     "contact": {
       "phone": "Call Us",
+      "email": "Email Us",
+      "telegram": "Telegram",
       "instagram": "Follow Us"
     }
+  },
+  "team": {
+    "title": "Meet Our Team",
+    "subtitle": "The experts behind Falcon Team's success"
   },
   "footer": {
     "company": "Falcon Team",

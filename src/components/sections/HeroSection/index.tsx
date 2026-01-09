@@ -227,6 +227,16 @@ export default function HeroSection() {
               <span className="relative z-10 group-hover:text-navy-950 transition-colors duration-300">{t('hero.cta.learnMore')}</span>
               <div className="absolute inset-0 bg-neon-cyan scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
             </Button>
+            <Button
+              variant="outline"
+              size="lg"
+              className="w-full sm:w-auto relative overflow-hidden group"
+              data-cursor="pointer"
+              onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+            >
+              <span className="relative z-10 group-hover:text-navy-950 transition-colors duration-300">{t('hero.cta.quote')}</span>
+              <div className="absolute inset-0 bg-neon-purple scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
+            </Button>
           </div>
 
           {/* Contact quick info */}

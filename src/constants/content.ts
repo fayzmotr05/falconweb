@@ -4,9 +4,13 @@ export const COMPANY_INFO = {
   ceo: 'Jasur Saynazimov',
   phone: '+1 (773) 832-7323',
   phoneLink: 'tel:+17738327323',
-  instagram: '@eld.falconplatinum',
-  instagramLink: 'https://instagram.com/eld.falconplatinum',
-  googleSheetsEndpoint: '', // Will be set after creating Google Apps Script
+  email: 'info@falcon-team.com',
+  emailLink: 'mailto:info@falcon-team.com',
+  telegram: '@falconteam',
+  telegramLink: 'https://t.me/falconteam',
+  instagram: '@falconteam_eld',
+  instagramLink: 'https://instagram.com/falconteam_eld',
+  googleSheetsEndpoint: 'https://script.google.com/macros/s/AKfycbz8VIL1vpDEMUSId-r43yNIl_6AK77-ssmPTmSxxlmkZKeFPco5gH5j57ljrTZ74BzL/exec',
 } as const
 
 export const STATS = [
@@ -43,6 +47,10 @@ export const INTEGRATIONS = [
   'Macropoint',
   'Trucker Tools',
   'Project44',
+  'Progressive',
+  'TruckerCloud',
+  'Terminal',
+  'FourKites',
 ] as const
 
 export const CLIENT_SEGMENTS = [
