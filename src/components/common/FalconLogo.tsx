@@ -11,7 +11,7 @@ export default function FalconLogo({
   size = 40,
   animated = true,
   className = '',
-  showText = false
+  showText: _showText = false
 }: FalconLogoProps) {
   const containerVariants = {
     hidden: { opacity: 0, scale: 0.8 },
