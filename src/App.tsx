@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import Header from '@/components/layout/Header'
 import Footer from '@/components/layout/Footer'
 import HeroSection from '@/components/sections/HeroSection'
@@ -12,28 +11,22 @@ import TeamSection from '@/components/sections/TeamSection'
 import WhyUsSection from '@/components/sections/WhyUsSection'
 import CTASection from '@/components/sections/CTASection'
 import CustomCursor from '@/components/common/CustomCursor'
-import PageLoader from '@/components/common/PageLoader'
 import ScrollProgress from '@/components/common/ScrollProgress'
 import { useSmoothScroll } from '@/hooks/useSmoothScroll'
 
 function App() {
-  const [isLoaded, setIsLoaded] = useState(false)
-
   // Initialize smooth scrolling
   useSmoothScroll()
 
   return (
     <>
-      {/* Page loader - shows on initial load */}
-      <PageLoader onComplete={() => setIsLoaded(true)} />
-
       {/* Custom cursor (desktop only) */}
       <CustomCursor />
 
       {/* Scroll progress indicator */}
       <ScrollProgress />
 
-      <div className={`min-h-screen bg-navy-950 ${isLoaded ? 'opacity-100' : 'opacity-0'} transition-opacity duration-500`}>
+      <div className="min-h-screen bg-navy-950">
         <Header />
         <main>
           <HeroSection />
