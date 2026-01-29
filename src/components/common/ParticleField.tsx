@@ -21,12 +21,12 @@ interface ParticleFieldProps {
 }
 
 export default function ParticleField({
-  particleCount = 80,
+  particleCount = 40,  // Reduced from 80 for better performance
   colors = ['#00d4ff', '#a855f7', '#22c55e'],
   maxSize = 3,
   minSize = 1,
   speed = 0.5,
-  connectionDistance = 150,
+  connectionDistance = 100,  // Reduced from 150 for better performance
   className = '',
 }: ParticleFieldProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null)
@@ -35,7 +35,11 @@ export default function ParticleField({
   const animationRef = useRef<number>(0)
 
   const initParticles = useCallback((width: number, height: number) => {
-    particlesRef.current = Array.from({ length: particleCount }, () => ({
+    // Further reduce particles on mobile for better performance
+    const isMobile = window.innerWidth < 768
+    const adjustedCount = isMobile ? Math.floor(particleCount / 2) : particleCount
+
+    particlesRef.current = Array.from({ length: adjustedCount }, () => ({
       x: Math.random() * width,
       y: Math.random() * height,
       vx: (Math.random() - 0.5) * speed,
@@ -91,25 +95,29 @@ export default function ParticleField({
       particle.x = Math.max(0, Math.min(width, particle.x))
       particle.y = Math.max(0, Math.min(height, particle.y))
 
-      // Draw particle with glow
+      // Draw particle (removed shadow blur for better performance)
       ctx.save()
       ctx.globalAlpha = particle.alpha
-      ctx.shadowBlur = 15
-      ctx.shadowColor = particle.color
       ctx.fillStyle = particle.color
       ctx.beginPath()
       ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2)
       ctx.fill()
       ctx.restore()
 
-      // Draw connections
-      for (let j = i + 1; j < particles.length; j++) {
+      // Draw connections (optimized with squared distance)
+      const connectionDistSquared = connectionDistance * connectionDistance
+      let connectionCount = 0
+      const MAX_CONNECTIONS = 3  // Limit connections per particle
+
+      for (let j = i + 1; j < particles.length && connectionCount < MAX_CONNECTIONS; j++) {
         const other = particles[j]
         const cdx = particle.x - other.x
         const cdy = particle.y - other.y
-        const cdist = Math.sqrt(cdx * cdx + cdy * cdy)
+        const cdistSquared = cdx * cdx + cdy * cdy
 
-        if (cdist < connectionDistance) {
+        if (cdistSquared < connectionDistSquared) {
+          // Only calculate sqrt when we need to draw
+          const cdist = Math.sqrt(cdistSquared)
           ctx.save()
           ctx.globalAlpha = (1 - cdist / connectionDistance) * 0.2
           ctx.strokeStyle = particle.color
@@ -119,6 +127,7 @@ export default function ParticleField({
           ctx.lineTo(other.x, other.y)
           ctx.stroke()
           ctx.restore()
+          connectionCount++
         }
       }
     })
@@ -158,6 +167,28 @@ export default function ParticleField({
       }
     }
   }, [initParticles, animate])
+
+  // Add visibility check to pause animation when offscreen
+  useEffect(() => {
+    const canvas = canvasRef.current
+    if (!canvas) return
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting && animationRef.current) {
+          cancelAnimationFrame(animationRef.current)
+          animationRef.current = 0
+        } else if (entry.isIntersecting && !animationRef.current) {
+          animate()
+        }
+      },
+      { threshold: 0 }
+    )
+
+    observer.observe(canvas)
+
+    return () => observer.disconnect()
+  }, [animate])
 
   return (
     <canvas

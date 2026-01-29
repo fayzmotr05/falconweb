@@ -6,20 +6,21 @@
     "getConsultation": "Konsultatsiya olish"
   },
   "hero": {
-    "title": "Yuk tashish va Muvofiqlik",
-    "titleHighlight": "dunyosidagi hamkoringiz",
+    "title": "Sizning hamkoringiz",
+    "titleHighlight": "Yuk tashish va Muvofiqlik dunyosida",
     "subtitle": "Barcha 50 shtatdagi yuk tashish kompaniyalari uchun to'liq avtopark boshqaruvi, ELD yechimlari, dispetcherlik xizmatlari va muvofiqlik yordami.",
     "cta": {
       "consultation": "Bepul konsultatsiya",
-      "learnMore": "Batafsil"
+      "learnMore": "Batafsil",
+      "quote": "Konsultatsiya olish"
     }
   },
   "stats": {
     "title": "Falcon Team raqamlarda",
     "subtitle": "Butun Amerika bo'ylab yuk tashish kompaniyalari bizga ishonadi",
     "clients": "Mijozlar",
-    "trucks": "Xizmatdagi yukmashinalar",
-    "years": "Yillik tajriba",
+    "trucks": "Xizmatdagi yuk mashinalari",
+    "years": "Yillik ish tajribasi",
     "team": "Jamoa a'zolari"
   },
   "timeline": {
@@ -94,7 +95,7 @@
     "title": "Kimga xizmat ko'rsatamiz",
     "subtitle": "Har qanday turdagi yuk tashish biznesi uchun individual yechimlar",
     "ownerOperator": {
-      "title": "Yakka operatorlar",
+      "title": "Mustaqil operatorlar",
       "description": "Ishonchli muvofiqlik va dispetcherlik yordamini qidirayotgan individual yuk mashina egalari"
     },
     "fleet": {
@@ -181,6 +182,8 @@
     },
     "contact": {
       "phone": "Bizga qo'ng'iroq qiling",
+      "email": "Email",
+      "telegram": "Telegram",
       "instagram": "Obuna bo'ling"
     }
   },
