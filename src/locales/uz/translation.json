@@ -8,7 +8,7 @@
   "hero": {
     "title": "Sizning hamkoringiz",
     "titleHighlight": "Yuk tashish va Muvofiqlik dunyosida",
-    "subtitle": "Barcha 50 shtatdagi yuk tashish kompaniyalari uchun to'liq avtopark boshqaruvi, ELD yechimlari, dispetcherlik xizmatlari va muvofiqlik yordami.",
+    "subtitle": "Barcha 50 shtatdagi trucking kompaniyalari uchun to'liq Fleet Management, ELD Solutions, Dispatch Services va Compliance yordami.",
     "cta": {
       "consultation": "Bepul konsultatsiya",
       "learnMore": "Batafsil",
@@ -31,12 +31,12 @@
       "description": "Falcon Team yuk tashish muvofiqligini inqilob qilish maqsadida tashkil etildi"
     },
     "2020": {
-      "title": "ELD platformasi ishga tushirildi",
-      "description": "Avtopark boshqaruvi uchun birinchi ELD yechimimizni ishga tushirdik"
+      "title": "ELD Platform ishga tushirildi",
+      "description": "Fleet Management uchun birinchi ELD Solution ni ishga tushirdik"
     },
     "2021": {
-      "title": "Xavfsizlik xizmatlari kengaytirildi",
-      "description": "DOT muvofiqlik va xavfsizlik auditlarini qo'shdik"
+      "title": "Safety xizmatlari kengaytirildi",
+      "description": "DOT Compliance va Safety auditlarini qo'shdik"
     },
     "2024": {
       "title": "O'z platformalarimiz",
@@ -51,27 +51,27 @@
     "title": "Bizning xizmatlarimiz",
     "subtitle": "Yuk tashish biznesingiz uchun kompleks yechimlar",
     "eld": {
-      "title": "ELD boshqaruvi",
-      "description": "Professional o'rnatish, 24/7 monitoring va 1 daqiqalik javob vaqti bilan tezkor yordam"
+      "title": "ELD Management",
+      "description": "Professional ELD o'rnatish, 24/7 monitoring va tezkor texnik yordam"
     },
     "safety": {
-      "title": "Xavfsizlik va Muvofiqlik",
-      "description": "DOT auditlariga tayyorgarlik, HOS tahlili, DQ fayllarini boshqarish"
+      "title": "Safety va Compliance",
+      "description": "DOT Compliance tayyorligi, HOS tahlili, DQ Files boshqaruvi"
     },
     "dispatch": {
-      "title": "Dispetcherlik xizmatlari",
-      "description": "Yuk qidirish, brokerlar bilan aloqa, hujjatlar va billing boshqaruvi"
+      "title": "Dispatch Services",
+      "description": "Load qidirish, brokerlar bilan aloqa, hujjatlar va billing boshqaruvi"
     },
     "fleet": {
-      "title": "Avtopark boshqaruvi",
-      "description": "To'liq avtopark nazorati, analitika, koordinatsiya va optimallashtirish"
+      "title": "Fleet Management",
+      "description": "To'liq Fleet nazorati, analytics, koordinatsiya va optimallashtirish"
     },
     "ifta": {
-      "title": "IFTA va Ruxsatnomalar",
-      "description": "KYU, NY HUT hisoblari, IFTA topshirish va ruxsatnomalar boshqaruvi"
+      "title": "IFTA va Permits",
+      "description": "KYU, NY HUT accounts, IFTA filing va permits boshqaruvi"
     },
     "integrations": {
-      "title": "IT integratsiyalar",
+      "title": "IT Integrations",
       "description": "Highway, Macropoint, Trucker Tools, Project44 va boshqa platformalar"
     }
   },
@@ -95,12 +95,12 @@
     "title": "Kimga xizmat ko'rsatamiz",
     "subtitle": "Har qanday turdagi yuk tashish biznesi uchun individual yechimlar",
     "ownerOperator": {
-      "title": "Mustaqil operatorlar",
-      "description": "Ishonchli muvofiqlik va dispetcherlik yordamini qidirayotgan individual yuk mashina egalari"
+      "title": "Owner-Operator",
+      "description": "Ishonchli Compliance va Dispatch yordamini qidirayotgan Owner-Operator lar"
     },
     "fleet": {
-      "title": "Avtopark kompaniyalari",
-      "description": "Kompleks avtopark boshqaruviga muhtoj 5-100+ yuk mashinali kompaniyalar"
+      "title": "Fleet kompaniyalari",
+      "description": "Kompleks Fleet Management ga muhtoj 5-100+ trucks li kompaniyalar"
     },
     "centralAsian": {
       "title": "Markaziy Osiyo tadbirkorlari",

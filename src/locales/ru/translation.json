@@ -8,7 +8,7 @@
   "hero": {
     "title": "Ваш партнёр в мире",
     "titleHighlight": "Грузоперевозок и Комплаенса",
-    "subtitle": "Полное управление автопарком, ELD решения, диспетчерские услуги и поддержка комплаенса для транспортных компаний во всех 50 штатах.",
+    "subtitle": "Полный Fleet Management, ELD Solutions, Dispatch Services и Compliance поддержка для trucking компаний во всех 50 штатах.",
     "cta": {
       "consultation": "Бесплатная консультация",
       "learnMore": "Узнать больше",
@@ -31,12 +31,12 @@
       "description": "Falcon Team была основана с миссией революционизировать комплаенс в грузоперевозках"
     },
     "2020": {
-      "title": "Запуск ELD платформы",
-      "description": "Запустили первое собственное ELD решение для управления автопарком"
+      "title": "Запуск ELD Platform",
+      "description": "Запустили первое собственное ELD Solution для Fleet Management"
     },
     "2021": {
-      "title": "Расширение услуг безопасности",
-      "description": "Расширили услуги, включив DOT комплаенс и аудиты безопасности"
+      "title": "Расширение Safety услуг",
+      "description": "Расширили услуги, включив DOT Compliance и Safety аудиты"
     },
     "2024": {
       "title": "Собственные платформы",
@@ -51,27 +51,27 @@
     "title": "Наши услуги",
     "subtitle": "Комплексные решения для вашего транспортного бизнеса",
     "eld": {
-      "title": "ELD Менеджмент",
-      "description": "Профессиональная установка, мониторинг 24/7 и быстрая поддержка с временем отклика 1 минута"
+      "title": "ELD Management",
+      "description": "Профессиональная установка ELD, мониторинг 24/7 и быстрая техподдержка"
     },
     "safety": {
-      "title": "Безопасность и Комплаенс",
-      "description": "Подготовка к DOT аудитам, анализ HOS, управление DQ файлами и соответствие нормативам"
+      "title": "Safety и Compliance",
+      "description": "Подготовка к DOT Compliance, анализ HOS, управление DQ Files и нормативам"
     },
     "dispatch": {
-      "title": "Диспетчерские услуги",
-      "description": "Поиск грузов, коммуникация с брокерами, обработка документов и управление биллингом"
+      "title": "Dispatch Services",
+      "description": "Поиск loads, коммуникация с брокерами, документы и billing"
     },
     "fleet": {
-      "title": "Управление автопарком",
-      "description": "Полный контроль автопарка, аналитика, координация и оптимизация"
+      "title": "Fleet Management",
+      "description": "Полный контроль Fleet, analytics, координация и оптимизация"
     },
     "ifta": {
-      "title": "IFTA и Разрешения",
-      "description": "Расчёты KYU, NY HUT, подача IFTA и управление разрешениями"
+      "title": "IFTA и Permits",
+      "description": "Расчёты KYU, NY HUT accounts, IFTA filing и управление permits"
     },
     "integrations": {
-      "title": "IT Интеграции",
+      "title": "IT Integrations",
       "description": "Highway, Macropoint, Trucker Tools, Project44 и другие платформы"
     }
   },
@@ -95,12 +95,12 @@
     "title": "Кого мы обслуживаем",
     "subtitle": "Индивидуальные решения для каждого типа транспортного бизнеса",
     "ownerOperator": {
-      "title": "Владельцы-операторы",
-      "description": "Индивидуальные владельцы грузовиков, ищущие надёжную поддержку"
+      "title": "Owner-Operator",
+      "description": "Индивидуальные Owner-Operator, ищущие надёжную Compliance и Dispatch поддержку"
     },
     "fleet": {
-      "title": "Автопарки",
-      "description": "Компании с 5-100+ грузовиками, нуждающиеся в комплексном управлении"
+      "title": "Fleet компании",
+      "description": "Компании с 5-100+ trucks, нуждающиеся в комплексном Fleet Management"
     },
     "centralAsian": {
       "title": "Основатели из Центральной Азии",
