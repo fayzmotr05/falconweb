@@ -8,7 +8,7 @@
   "hero": {
     "title": "Sizning hamkoringiz",
     "titleHighlight": "Yuk tashish va Muvofiqlik dunyosida",
-    "subtitle": "Barcha 50 shtatdagi trucking kompaniyalari uchun to'liq Fleet Management, ELD Solutions, Dispatch Services va Compliance yordami.",
+    "subtitle": "Barcha 50 shtatdagi yuk tashish kompaniyalari uchun to'liq Fleet Management, ELD yechimlari, Dispatch Services va muvofiqlik yordami.",
     "cta": {
       "consultation": "Bepul konsultatsiya",
       "learnMore": "Batafsil",
@@ -32,7 +32,7 @@
     },
     "2020": {
       "title": "ELD Platform ishga tushirildi",
-      "description": "Fleet Management uchun birinchi ELD Solution ni ishga tushirdik"
+      "description": "Fleet Management uchun birinchi ELD yechimini ishga tushirdik"
     },
     "2021": {
       "title": "Safety xizmatlari kengaytirildi",
@@ -52,23 +52,23 @@
     "subtitle": "Yuk tashish biznesingiz uchun kompleks yechimlar",
     "eld": {
       "title": "ELD Management",
-      "description": "Professional ELD o'rnatish, 24/7 monitoring va tezkor texnik yordam"
+      "description": "Mutaxassislar tomonidan ELD o'rnatish, 24/7 monitoring va tezkor texnik yordam"
     },
     "safety": {
       "title": "Safety va Compliance",
-      "description": "DOT Compliance tayyorligi, HOS tahlili, DQ Files boshqaruvi"
+      "description": "DOT muvofiqlik tayyorligi, HOS tahlili, DQ fayllarini boshqaruvi va me'yoriy talablar"
     },
     "dispatch": {
       "title": "Dispatch Services",
-      "description": "Load qidirish, brokerlar bilan aloqa, hujjatlar va billing boshqaruvi"
+      "description": "Yuk qidirish, brokerlar bilan aloqa, hujjatlar va hisob-kitoblar boshqaruvi"
     },
     "fleet": {
       "title": "Fleet Management",
-      "description": "To'liq Fleet nazorati, analytics, koordinatsiya va optimallashtirish"
+      "description": "To'liq flot nazorati, analitika, koordinatsiya va optimallashtirish"
     },
     "ifta": {
       "title": "IFTA va Permits",
-      "description": "KYU, NY HUT accounts, IFTA filing va permits boshqaruvi"
+      "description": "KYU, NY HUT hisoblari, IFTA arizalashtirish va ruxsatnomalar boshqaruvi"
     },
     "integrations": {
       "title": "IT Integrations",
@@ -96,11 +96,11 @@
     "subtitle": "Har qanday turdagi yuk tashish biznesi uchun individual yechimlar",
     "ownerOperator": {
       "title": "Owner-Operator",
-      "description": "Ishonchli Compliance va Dispatch yordamini qidirayotgan Owner-Operator lar"
+      "description": "Ishonchli muvofiqlik va dispatcher yordamini qidirayotgan individual yuk mashina egalari"
     },
     "fleet": {
       "title": "Fleet kompaniyalari",
-      "description": "Kompleks Fleet Management ga muhtoj 5-100+ trucks li kompaniyalar"
+      "description": "Kompleks Fleet Management ga muhtoj 5-100+ yuk mashinalari bo'lgan kompaniyalar"
     },
     "centralAsian": {
       "title": "Markaziy Osiyo tadbirkorlari",

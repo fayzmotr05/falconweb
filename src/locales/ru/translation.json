@@ -8,7 +8,7 @@
   "hero": {
     "title": "Ваш партнёр в мире",
     "titleHighlight": "Грузоперевозок и Комплаенса",
-    "subtitle": "Полный Fleet Management, ELD Solutions, Dispatch Services и Compliance поддержка для trucking компаний во всех 50 штатах.",
+    "subtitle": "Полный Fleet Management, решения ELD, Dispatch Services и поддержка комплаенса для транспортных компаний во всех 50 штатах.",
     "cta": {
       "consultation": "Бесплатная консультация",
       "learnMore": "Узнать больше",
@@ -32,7 +32,7 @@
     },
     "2020": {
       "title": "Запуск ELD Platform",
-      "description": "Запустили первое собственное ELD Solution для Fleet Management"
+      "description": "Запустили первое собственное решение ELD для Fleet Management"
     },
     "2021": {
       "title": "Расширение Safety услуг",
@@ -56,19 +56,19 @@
     },
     "safety": {
       "title": "Safety и Compliance",
-      "description": "Подготовка к DOT Compliance, анализ HOS, управление DQ Files и нормативам"
+      "description": "Подготовка к комплаенсу DOT, анализ HOS, управление файлами DQ и нормативными требованиями"
     },
     "dispatch": {
       "title": "Dispatch Services",
-      "description": "Поиск loads, коммуникация с брокерами, документы и billing"
+      "description": "Поиск грузов, общение с брокерами, документация и выставление счетов"
     },
     "fleet": {
       "title": "Fleet Management",
-      "description": "Полный контроль Fleet, analytics, координация и оптимизация"
+      "description": "Полный контроль автопарка, аналитика, координация и оптимизация"
     },
     "ifta": {
       "title": "IFTA и Permits",
-      "description": "Расчёты KYU, NY HUT accounts, IFTA filing и управление permits"
+      "description": "Расчеты KYU, счета NY HUT, подача документов IFTA и управление разрешениями"
     },
     "integrations": {
       "title": "IT Integrations",
@@ -96,11 +96,11 @@
     "subtitle": "Индивидуальные решения для каждого типа транспортного бизнеса",
     "ownerOperator": {
       "title": "Owner-Operator",
-      "description": "Индивидуальные Owner-Operator, ищущие надёжную Compliance и Dispatch поддержку"
+      "description": "Индивидуальные собственники грузовиков, ищущие надежную поддержку в комплаенсе и диспетчеризации"
     },
     "fleet": {
       "title": "Fleet компании",
-      "description": "Компании с 5-100+ trucks, нуждающиеся в комплексном Fleet Management"
+      "description": "Компании с 5-100+ грузовиками, нуждающиеся в комплексном Fleet Management"
     },
     "centralAsian": {
       "title": "Основатели из Центральной Азии",
