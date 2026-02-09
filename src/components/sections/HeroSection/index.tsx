@@ -109,15 +109,17 @@ export default function HeroSection() {
       ref={sectionRef}
       className="relative min-h-screen flex items-center justify-center overflow-hidden bg-navy-950"
     >
-      {/* Layer 1: Particle field - reduced on mobile for performance */}
-      <div className="absolute inset-0 z-0">
-        <ParticleField
-          particleCount={shouldReduceAnimations ? 20 : 100}
-          colors={['#00d4ff', '#a855f7', '#22c55e']}
-          connectionDistance={shouldReduceAnimations ? 80 : 120}
-          speed={shouldReduceAnimations ? 0.2 : 0.3}
-        />
-      </div>
+      {/* Layer 1: Particle field - desktop only */}
+      {!shouldReduceAnimations && (
+        <div className="absolute inset-0 z-0">
+          <ParticleField
+            particleCount={100}
+            colors={['#00d4ff', '#a855f7', '#22c55e']}
+            connectionDistance={120}
+            speed={0.3}
+          />
+        </div>
+      )}
 
       {/* Layer 2: Gradient orbs - scaled down on mobile to prevent overflow */}
       <div className="absolute inset-0 z-[1] pointer-events-none overflow-hidden">

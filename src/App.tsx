@@ -7,7 +7,7 @@ import ServicesSection from '@/components/sections/ServicesSection'
 import PlatformsSection from '@/components/sections/PlatformsSection'
 import ClientsSection from '@/components/sections/ClientsSection'
 import MissionSection from '@/components/sections/MissionSection'
-import TeamSection from '@/components/sections/TeamSection'
+// import TeamSection from '@/components/sections/TeamSection'
 import WhyUsSection from '@/components/sections/WhyUsSection'
 import CTASection from '@/components/sections/CTASection'
 import CustomCursor from '@/components/common/CustomCursor'
@@ -36,7 +36,7 @@ function App() {
           <PlatformsSection />
           <ClientsSection />
           <MissionSection />
-          <TeamSection />
+          {/* <TeamSection /> */}
           <WhyUsSection />
           <CTASection />
         </main>
