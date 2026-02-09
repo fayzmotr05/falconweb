@@ -149,7 +149,38 @@ function ParticleBackground() {
   )
 }
 
-// Magnetic input field
+// Simple static input (used on mobile)
+function StaticInput({
+  label,
+  error,
+  icon,
+  ...props
+}: {
+  label: string
+  error?: boolean
+  icon: React.ReactNode
+} & React.InputHTMLAttributes<HTMLInputElement>) {
+  return (
+    <div className="relative">
+      <label className="block text-sm font-medium text-text-secondary mb-2">
+        {label}
+      </label>
+      <div className="relative">
+        <div className="absolute left-4 top-1/2 -translate-y-1/2 text-text-muted">
+          {icon}
+        </div>
+        <input
+          {...props}
+          className={`w-full pl-12 pr-4 py-4 bg-navy-800/50 border-2 ${
+            error ? 'border-red-500' : 'border-navy-700 focus:border-neon-cyan'
+          } rounded-xl text-text-primary placeholder-text-muted focus:outline-none transition-colors duration-200`}
+        />
+      </div>
+    </div>
+  )
+}
+
+// Magnetic input field (desktop only)
 function MagneticInput({
   label,
   error,
@@ -277,12 +308,8 @@ function ContactCard({
           animate={{ opacity: isHovered ? 1 : 0 }}
         />
 
-        {/* Floating animation */}
-        <motion.div
-          className="flex items-center gap-4 relative"
-          animate={{ y: [0, -3, 0] }}
-          transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut', delay: index * 0.5 }}
-        >
+        {/* Content (no infinite floating on mobile) */}
+        <div className="flex items-center gap-4 relative">
           {/* Icon */}
           <motion.div
             className="w-14 h-14 rounded-xl flex items-center justify-center"
@@ -327,7 +354,7 @@ function ContactCard({
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
             </svg>
           </motion.div>
-        </motion.div>
+        </div>
 
         {/* Ripple effect on hover */}
         {isHovered && (
@@ -347,10 +374,11 @@ function ContactCard({
 // Success confetti
 function SuccessConfetti() {
   const colors = ['#00d4ff', '#10b981', '#a855f7', '#f472b6', '#fb923c']
+  const isMobile = typeof window !== 'undefined' && window.innerWidth < 768
 
   return (
     <div className="absolute inset-0 pointer-events-none overflow-hidden">
-      {[...Array(50)].map((_, i) => (
+      {[...Array(isMobile ? 15 : 50)].map((_, i) => (
         <motion.div
           key={i}
           className="absolute w-3 h-3 rounded-full"
@@ -482,6 +510,9 @@ export default function CTASection() {
   const isInView = useInView(formRef, { once: true, margin: '-100px' })
   const { shouldReduceAnimations } = useReducedMotion()
 
+  // Use simple inputs on mobile to avoid spring physics overhead
+  const InputComponent = shouldReduceAnimations ? StaticInput : MagneticInput
+
   const {
     register,
     handleSubmit,
@@ -526,34 +557,32 @@ export default function CTASection() {
           </div>
         )}
 
-        {/* Gradient orbs - scaled down on mobile, hidden animations */}
+        {/* Gradient orbs - simplified on mobile (no blur, no animation) */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <motion.div
-            className="absolute top-1/4 left-1/4 w-[280px] h-[280px] md:w-[600px] md:h-[600px] bg-neon-cyan/10 rounded-full blur-[80px] md:blur-[150px]"
-            animate={shouldReduceAnimations ? {} : {
-              x: [0, 50, 0],
-              y: [0, 30, 0],
-              scale: [1, 1.2, 1],
-            }}
-            transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut' }}
-          />
-          <motion.div
-            className="absolute bottom-1/4 right-1/4 w-[240px] h-[240px] md:w-[500px] md:h-[500px] bg-neon-purple/10 rounded-full blur-[60px] md:blur-[120px]"
-            animate={shouldReduceAnimations ? {} : {
-              x: [0, -40, 0],
-              y: [0, -20, 0],
-              scale: [1, 1.3, 1],
-            }}
-            transition={{ duration: 12, repeat: Infinity, ease: 'easeInOut', delay: 2 }}
-          />
-          <motion.div
-            className="hidden md:block absolute top-1/2 right-1/3 w-[400px] h-[400px] bg-neon-green/5 rounded-full blur-[100px]"
-            animate={shouldReduceAnimations ? {} : {
-              x: [0, 30, 0],
-              scale: [1, 1.1, 1],
-            }}
-            transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut', delay: 4 }}
-          />
+          {shouldReduceAnimations ? (
+            <>
+              <div className="absolute top-1/4 left-1/4 w-[280px] h-[280px] rounded-full bg-neon-cyan/5" />
+              <div className="absolute bottom-1/4 right-1/4 w-[240px] h-[240px] rounded-full bg-neon-purple/5" />
+            </>
+          ) : (
+            <>
+              <motion.div
+                className="absolute top-1/4 left-1/4 w-[600px] h-[600px] bg-neon-cyan/10 rounded-full blur-[150px]"
+                animate={{ x: [0, 50, 0], y: [0, 30, 0], scale: [1, 1.2, 1] }}
+                transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut' }}
+              />
+              <motion.div
+                className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-neon-purple/10 rounded-full blur-[120px]"
+                animate={{ x: [0, -40, 0], y: [0, -20, 0], scale: [1, 1.3, 1] }}
+                transition={{ duration: 12, repeat: Infinity, ease: 'easeInOut', delay: 2 }}
+              />
+              <motion.div
+                className="absolute top-1/2 right-1/3 w-[400px] h-[400px] bg-neon-green/5 rounded-full blur-[100px]"
+                animate={{ x: [0, 30, 0], scale: [1, 1.1, 1] }}
+                transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut', delay: 4 }}
+              />
+            </>
+          )}
         </div>
 
         <Container>
@@ -608,7 +637,7 @@ export default function CTASection() {
                 >
                   <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
                     {/* Name */}
-                    <MagneticInput
+                    <InputComponent
                       label={`${t('cta.form.name')} *`}
                       type="text"
                       placeholder="John Doe"
@@ -623,7 +652,7 @@ export default function CTASection() {
 
                     {/* Email & Phone */}
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                      <MagneticInput
+                      <InputComponent
                         label={`${t('cta.form.email')} *`}
                         type="email"
                         placeholder="john@company.com"
@@ -635,7 +664,7 @@ export default function CTASection() {
                           </svg>
                         }
                       />
-                      <MagneticInput
+                      <InputComponent
                         label={`${t('cta.form.phone')} *`}
                         type="tel"
                         placeholder="+1 (555) 123-4567"
@@ -650,7 +679,7 @@ export default function CTASection() {
                     </div>
 
                     {/* Company */}
-                    <MagneticInput
+                    <InputComponent
                       label={t('cta.form.company')}
                       type="text"
                       placeholder="Your Company LLC"
@@ -783,16 +812,13 @@ export default function CTASection() {
                   transition={{ delay: 0.4, duration: 0.6 }}
                   className="flex items-center justify-center gap-6 pt-6"
                 >
-                  {['24/7', 'USA', 'Pro'].map((badge, i) => (
-                    <motion.div
+                  {['24/7', 'USA', 'Pro'].map((badge) => (
+                    <div
                       key={badge}
                       className="px-4 py-2 bg-navy-800/30 border border-navy-700 rounded-full text-sm text-text-secondary"
-                      whileHover={{ scale: 1.1, borderColor: '#00d4ff' }}
-                      animate={{ y: [0, -2, 0] }}
-                      transition={{ duration: 2, repeat: Infinity, delay: i * 0.3 }}
                     >
                       {badge}
-                    </motion.div>
+                    </div>
                   ))}
                 </motion.div>
               </div>

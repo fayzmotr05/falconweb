@@ -10,6 +10,13 @@ interface Card3DProps {
   flipOnView?: boolean
 }
 
+// Check once at module level
+const isMobileDevice = typeof window !== 'undefined' && (
+  window.innerWidth < 768 ||
+  'ontouchstart' in window ||
+  navigator.maxTouchPoints > 0
+)
+
 export default function Card3D({
   children,
   className = '',
@@ -20,6 +27,15 @@ export default function Card3D({
   const cardRef = useRef<HTMLDivElement>(null)
   const [transform, setTransform] = useState({ rotateX: 0, rotateY: 0 })
   const [isHovered, setIsHovered] = useState(false)
+
+  // On mobile: render plain div, no 3D transforms or spring physics
+  if (isMobileDevice) {
+    return (
+      <div className={cn('relative', className)}>
+        {children}
+      </div>
+    )
+  }
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!cardRef.current) return

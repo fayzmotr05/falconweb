@@ -68,25 +68,17 @@ function MilestoneCard({
         )}
 
         {/* Year badge */}
-        <motion.span
-          className={`inline-block px-4 py-2 text-lg font-bold rounded-full mb-4 ${
+        <span
+          className={`inline-block px-4 py-2 text-lg font-bold rounded-full mb-4 transition-colors duration-300 ${
             isActive
               ? 'text-neon-cyan bg-neon-cyan/20'
               : isPast
                 ? 'text-text-secondary bg-navy-700/50'
                 : 'text-text-muted bg-navy-800/50'
           }`}
-          animate={{
-            scale: isActive ? [1, 1.05, 1] : 1,
-          }}
-          transition={{
-            duration: 2,
-            repeat: isActive ? Infinity : 0,
-            ease: 'easeInOut',
-          }}
         >
           {item.year}
-        </motion.span>
+        </span>
 
         <h3
           className={`text-xl md:text-2xl font-bold mb-3 transition-colors duration-300 ${
@@ -259,22 +251,12 @@ export default function TimelineSection() {
           {/* Progress indicator */}
           <div className="flex justify-center gap-2 sm:gap-3 mb-6">
             {TIMELINE.map((_, index) => (
-              <motion.div
+              <div
                 key={index}
                 className={`h-3 sm:h-2 rounded-full transition-all duration-300 cursor-pointer ${
                   index <= activeIndex ? 'bg-neon-cyan' : 'bg-navy-700'
                 }`}
-                animate={{
-                  width: index === activeIndex ? 32 : 12,
-                  scale: index === activeIndex ? [1, 1.1, 1] : 1,
-                }}
-                transition={{
-                  scale: {
-                    duration: 1.5,
-                    repeat: index === activeIndex ? Infinity : 0,
-                    ease: 'easeInOut',
-                  },
-                }}
+                style={{ width: index === activeIndex ? 32 : 12 }}
               />
             ))}
           </div>
@@ -324,24 +306,13 @@ export default function TimelineSection() {
                   }`}
                 >
                   {/* Connector dot */}
-                  <motion.div
-                    className="absolute left-4 md:left-1/2 md:-translate-x-1/2 w-6 h-6 rounded-full z-10"
-                    animate={{
-                      backgroundColor: index <= activeIndex ? '#00d4ff' : '#1e293b',
-                      scale: index === activeIndex ? [1, 1.3, 1] : 1,
-                      boxShadow:
-                        index === activeIndex
-                          ? ['0 0 0px rgba(0, 212, 255, 0)', '0 0 20px rgba(0, 212, 255, 0.8)', '0 0 0px rgba(0, 212, 255, 0)']
-                          : 'none',
-                    }}
-                    transition={{
-                      duration: 1.5,
-                      repeat: index === activeIndex ? Infinity : 0,
-                      ease: 'easeInOut',
-                    }}
+                  <div
+                    className="absolute left-4 md:left-1/2 md:-translate-x-1/2 w-6 h-6 rounded-full z-10 transition-colors duration-300"
                     style={{
+                      backgroundColor: index <= activeIndex ? '#00d4ff' : '#1e293b',
                       border: '3px solid',
                       borderColor: index <= activeIndex ? '#00d4ff' : '#334155',
+                      boxShadow: index === activeIndex ? '0 0 15px rgba(0, 212, 255, 0.6)' : 'none',
                     }}
                   />
 

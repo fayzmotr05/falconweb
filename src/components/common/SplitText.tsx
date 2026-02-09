@@ -17,6 +17,13 @@ interface SplitTextProps {
   as?: 'h1' | 'h2' | 'h3' | 'p' | 'span' | 'div'
 }
 
+// Check once at module level
+const isMobileDevice = typeof window !== 'undefined' && (
+  window.innerWidth < 768 ||
+  'ontouchstart' in window ||
+  navigator.maxTouchPoints > 0
+)
+
 export default function SplitText({
   children,
   className = '',
@@ -35,7 +42,33 @@ export default function SplitText({
     const element = elementRef.current
     if (!element) return
 
-    // Split the text
+    // On mobile: simple fade-in only, skip SplitType and 3D transforms
+    if (isMobileDevice) {
+      gsap.set(element, { opacity: 0, y: 20 })
+
+      const ctx = gsap.context(() => {
+        const scrollConfig = trigger === 'inView' ? {
+          scrollTrigger: {
+            trigger: element,
+            start: 'top 85%',
+            toggleActions: 'play none none none',
+          },
+        } : {}
+
+        gsap.to(element, {
+          opacity: 1,
+          y: 0,
+          duration: 0.5,
+          delay: trigger === 'load' ? delay : 0,
+          ease: 'power2.out',
+          ...scrollConfig,
+        })
+      })
+
+      return () => ctx.revert()
+    }
+
+    // Desktop: full split text animation
     splitRef.current = new SplitType(element, {
       types: type === 'chars' ? 'chars,words' : type === 'words' ? 'words' : 'lines',
     })
@@ -109,7 +142,7 @@ export default function SplitText({
     <Tag
       ref={elementRef as React.RefObject<HTMLDivElement>}
       className={`${className}`}
-      style={{ perspective: '1000px' }}
+      style={isMobileDevice ? undefined : { perspective: '1000px' }}
     >
       {children}
     </Tag>

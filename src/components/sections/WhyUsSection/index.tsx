@@ -342,25 +342,21 @@ export default function WhyUsSection() {
         {/* Celebration particles - disabled on mobile for performance */}
         {!shouldReduceAnimations && <CelebrationParticles show={showCelebration} />}
 
-        {/* Background decorations */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <motion.div
-            className="absolute top-0 right-0 w-96 h-96 bg-neon-cyan/5 rounded-full blur-[150px]"
-            animate={{
-              scale: [1, 1.2, 1],
-              opacity: [0.3, 0.5, 0.3],
-            }}
-            transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
-          />
-          <motion.div
-            className="absolute bottom-0 left-0 w-96 h-96 bg-neon-purple/5 rounded-full blur-[150px]"
-            animate={{
-              scale: [1, 1.3, 1],
-              opacity: [0.3, 0.4, 0.3],
-            }}
-            transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut', delay: 2 }}
-          />
-        </div>
+        {/* Background decorations - disabled on mobile */}
+        {!shouldReduceAnimations && (
+          <div className="absolute inset-0 overflow-hidden pointer-events-none hidden md:block">
+            <motion.div
+              className="absolute top-0 right-0 w-96 h-96 bg-neon-cyan/5 rounded-full blur-[150px]"
+              animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.5, 0.3] }}
+              transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
+            />
+            <motion.div
+              className="absolute bottom-0 left-0 w-96 h-96 bg-neon-purple/5 rounded-full blur-[150px]"
+              animate={{ scale: [1, 1.3, 1], opacity: [0.3, 0.4, 0.3] }}
+              transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut', delay: 2 }}
+            />
+          </div>
+        )}
 
         <Container size="md">
           {/* Section header */}
