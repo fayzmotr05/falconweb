@@ -9,6 +9,11 @@ export function useSmoothScroll() {
   const lenisRef = useRef<Lenis | null>(null)
 
   useEffect(() => {
+    // Skip smooth scroll on mobile/touch — native scroll is better and saves CPU
+    const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0
+    const isMobile = window.innerWidth < 768
+    if (isTouchDevice || isMobile) return
+
     const lenis = new Lenis({
       duration: 1.2,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),

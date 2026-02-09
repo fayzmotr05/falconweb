@@ -66,8 +66,10 @@ export default function HeroSection() {
     return () => ctx.revert()
   }, [isLoaded])
 
-  // Pinned scroll effect - content fades/scales on scroll
+  // Pinned scroll effect - content fades/scales on scroll (desktop only)
   useEffect(() => {
+    if (shouldReduceAnimations) return
+
     const section = sectionRef.current
     const content = contentRef.current
     if (!section || !content) return
@@ -102,7 +104,7 @@ export default function HeroSection() {
     })
 
     return () => ctx.revert()
-  }, [])
+  }, [shouldReduceAnimations])
 
   return (
     <section
@@ -113,7 +115,7 @@ export default function HeroSection() {
       {!shouldReduceAnimations && (
         <div className="absolute inset-0 z-0">
           <ParticleField
-            particleCount={100}
+            particleCount={60}
             colors={['#00d4ff', '#a855f7', '#22c55e']}
             connectionDistance={120}
             speed={0.3}
@@ -121,12 +123,19 @@ export default function HeroSection() {
         </div>
       )}
 
-      {/* Layer 2: Gradient orbs - scaled down on mobile to prevent overflow */}
+      {/* Layer 2: Gradient orbs - simplified on mobile (no blur filter) */}
       <div className="absolute inset-0 z-[1] pointer-events-none overflow-hidden">
-        <div className={`absolute top-1/4 left-1/4 w-[280px] h-[280px] md:w-[600px] md:h-[600px] bg-neon-cyan/10 rounded-full ${shouldReduceAnimations ? 'blur-[60px]' : 'blur-[80px] md:blur-[150px] animate-float'}`} />
-        <div className={`absolute bottom-1/4 right-1/4 w-[240px] h-[240px] md:w-[500px] md:h-[500px] bg-neon-purple/10 rounded-full ${shouldReduceAnimations ? 'blur-[50px]' : 'blur-[60px] md:blur-[120px] animate-float'}`} style={{ animationDelay: '-3s' }} />
-        {!shouldReduceAnimations && (
-          <div className="hidden md:block absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-neon-green/5 rounded-full blur-[100px] animate-pulse" />
+        {shouldReduceAnimations ? (
+          <>
+            <div className="absolute top-1/4 left-1/4 w-[280px] h-[280px] rounded-full bg-neon-cyan/5" />
+            <div className="absolute bottom-1/4 right-1/4 w-[240px] h-[240px] rounded-full bg-neon-purple/5" />
+          </>
+        ) : (
+          <>
+            <div className="absolute top-1/4 left-1/4 w-[600px] h-[600px] bg-neon-cyan/10 rounded-full blur-[80px] md:blur-[150px] animate-float" />
+            <div className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-neon-purple/10 rounded-full blur-[60px] md:blur-[120px] animate-float" style={{ animationDelay: '-3s' }} />
+            <div className="hidden md:block absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-neon-green/5 rounded-full blur-[100px] animate-pulse" />
+          </>
         )}
       </div>
 
