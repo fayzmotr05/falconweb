@@ -1,47 +1,47 @@
-import { lazy, Suspense } from 'react'
+import { lazy, Suspense, useEffect } from 'react'
+import { Routes, Route, useLocation } from 'react-router-dom'
 import Header from '@/components/layout/Header'
 import Footer from '@/components/layout/Footer'
-import HeroSection from '@/components/sections/HeroSection'
 import CustomCursor from '@/components/common/CustomCursor'
 import ScrollProgress from '@/components/common/ScrollProgress'
 import { useSmoothScroll } from '@/hooks/useSmoothScroll'
+import HomePage from '@/pages/HomePage'
 
-// Lazy-load below-the-fold sections for faster initial load
-const StatsSection = lazy(() => import('@/components/sections/StatsSection'))
-const TimelineSection = lazy(() => import('@/components/sections/TimelineSection'))
-const ServicesSection = lazy(() => import('@/components/sections/ServicesSection'))
-const PlatformsSection = lazy(() => import('@/components/sections/PlatformsSection'))
-const ClientsSection = lazy(() => import('@/components/sections/ClientsSection'))
-const MissionSection = lazy(() => import('@/components/sections/MissionSection'))
-const WhyUsSection = lazy(() => import('@/components/sections/WhyUsSection'))
-const CTASection = lazy(() => import('@/components/sections/CTASection'))
+const ServiceDetailPage = lazy(() => import('@/pages/ServiceDetailPage'))
+
+function ScrollToTop() {
+  const { pathname } = useLocation()
+
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [pathname])
+
+  return null
+}
 
 function App() {
-  // Initialize smooth scrolling
   useSmoothScroll()
 
   return (
     <>
-      {/* Custom cursor (desktop only) */}
       <CustomCursor />
-
-      {/* Scroll progress indicator */}
       <ScrollProgress />
+      <ScrollToTop />
 
       <div className="min-h-screen bg-navy-950">
         <Header />
         <main>
-          <HeroSection />
-          <Suspense fallback={null}>
-            <StatsSection />
-            <TimelineSection />
-            <ServicesSection />
-            <PlatformsSection />
-            <ClientsSection />
-            <MissionSection />
-            <WhyUsSection />
-            <CTASection />
-          </Suspense>
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route
+              path="/services/:serviceKey"
+              element={
+                <Suspense fallback={null}>
+                  <ServiceDetailPage />
+                </Suspense>
+              }
+            />
+          </Routes>
         </main>
         <Footer />
       </div>

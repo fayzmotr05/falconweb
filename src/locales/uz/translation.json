@@ -52,27 +52,192 @@
     "subtitle": "Yuk tashish biznesingiz uchun kompleks yechimlar",
     "eld": {
       "title": "ELD Management",
-      "description": "Mutaxassislar tomonidan ELD o'rnatish, 24/7 monitoring va tezkor texnik yordam"
+      "description": "Tez sozlash, real vaqt monitoring va kunduzi-kechasi yordam bilan to'liq ELD muvofiqlik xizmati"
     },
     "safety": {
       "title": "Safety va Compliance",
-      "description": "DOT muvofiqlik tayyorligi, HOS tahlili, DQ fayllarini boshqaruvi va me'yoriy talablar"
-    },
-    "dispatch": {
-      "title": "Dispatch Services",
-      "description": "Yuk qidirish, brokerlar bilan aloqa, hujjatlar va hisob-kitoblar boshqaruvi"
-    },
-    "fleet": {
-      "title": "Fleet Management",
-      "description": "To'liq flot nazorati, analitika, koordinatsiya va optimallashtirish"
+      "description": "DOT audit, HOS tekshiruvi, DQ fayllar boshqaruvi va CSA monitoringini o'z ichiga olgan to'liq muvofiqlik"
     },
     "ifta": {
       "title": "IFTA va Permits",
-      "description": "KYU, NY HUT hisoblari, IFTA arizalashtirish va ruxsatnomalar boshqaruvi"
+      "description": "Aniq yoqilg'i soliq hisoboti, IFTA ro'yxatdan o'tish va choraklik hisobot xizmatlari"
     },
-    "integrations": {
-      "title": "IT Integrations",
-      "description": "Highway, Macropoint, Trucker Tools, Project44 va boshqa platformalar"
+    "setupmc": {
+      "title": "Setup MC",
+      "description": "MC avtoritet ochish, DOT ro'yxatdan o'tish va biznes tashkil etish xizmatlari"
+    },
+    "accounting": {
+      "title": "Buxgalteriya",
+      "description": "Billing, haydovchi to'lovlari, moliyaviy hisobot va hisob-fakturalarni boshqarish"
+    },
+    "hiring": {
+      "title": "Haydovchilarni yollash",
+      "description": "Haydovchi qidirish, tekshiruv, DQF tuzish va DOT-ga mos rasmiylashtirish"
+    }
+  },
+  "serviceDetail": {
+    "backToServices": "Xizmatlarga qaytish",
+    "learnMore": "Batafsil",
+    "cta": {
+      "title": "Boshlashga tayyormisiz?",
+      "subtitle": "Bugun bepul konsultatsiya uchun biz bilan bog'laning — barcha tafsilotlarni biz hal qilamiz",
+      "button": "Bepul konsultatsiya"
+    },
+    "eld": {
+      "title": "ELD / Logbook boshqaruvi",
+      "subtitle": "Tashuvchilar va owner-operatorlar uchun to'liq ELD muvofiqlik xizmati: tezkor sozlash, jonli yordam va ishonchli hisobot.",
+      "features": [
+        {
+          "title": "24/7 qo'llab-quvvatlash",
+          "description": "Jamoamiz ELD muammolari, kirish qiyinchiliklari, HOS savollari, uyg'otish qo'ng'iroqlari, internet uzilishlari va qurilma nosozliklari bilan kunduzi-kechasi yordam beradi. Zarur bo'lganda haydovchilarga qog'oz logga o'tishni ko'rsatamiz va ELD provayderi bilan to'g'ridan-to'g'ri bog'lanamiz."
+        },
+        {
+          "title": "Logbook tekshiruvi",
+          "description": "Haydovchilaringiz loglari sinxronlashganda biz ularni aniqlik va FMCSA muvofiqligiga tekshiramiz. HOS xatolarini tuzatishga yordam beramiz, loglarni BOL va yoqilg'i kvitansiyalari bilan solishtiramiz va flotingizni doimo inspeksiyaga tayyor holatda saqlaymiz."
+        },
+        {
+          "title": "Faol monitoring va ogohlantirishlar",
+          "description": "Haydovchi faoliyati, ELD holati va qolgan ish soatlarini kuzatamiz. E'tibor talab qiladigan narsa bo'lsa — kam soatlar, ulanish muammolari yoki javob bermaydigan haydovchilar — darhol haydovchi va kompaniyani xabardor qilamiz."
+        },
+        {
+          "title": "O'qitish va konsultatsiya",
+          "description": "Haydovchilar va dispetcherlar uchun amaliy ELD o'qitish, FMCSA qoidalarini sodda tilda tushuntirish va yo'l chetida tekshiruvlarda yordam. Har bir yangi haydovchi to'liq qo'llab-quvvatlash oladi."
+        },
+        {
+          "title": "FMCSA ro'yxatidagi qurilmalar",
+          "description": "Biz faqat FMCSA rasmiy ro'yxatidagi ELD tizimlaridan foydalanamiz, bu flotingiz uchun ishonchli va me'yorlarga mos log yozishni kafolatlaydi."
+        },
+        {
+          "title": "IFTA masofa hisoboti",
+          "description": "ELD masofa ma'lumotlari va yoqilg'i yozuvlari asosida aniq choraklik IFTA hisobotlarini tayyorlaymiz."
+        },
+        {
+          "title": "Drug test muvofiqlashtirish",
+          "description": "Flotingizga qo'shilayotgan yangi haydovchilar uchun DOT-ga mos drug testlarni rejalashtirish va muvofiqlashtirishda yordam beramiz."
+        },
+        {
+          "title": "Tez sozlash (15–60 daqiqa)",
+          "description": "Onlayn yoki telefon orqali ro'yxatdan o'ting. Flotingizni sozlaymiz, qurilmalarni ulaymiz va jamoangizni o'rgatamiz — barchasi bir soat ichida."
+        }
+      ]
+    },
+    "safety": {
+      "title": "Safety va Compliance",
+      "subtitle": "FMCSA, DOT va davlat agentliklari talablarini qamrab oluvchi to'liq normativ muvofiqlik boshqaruvi — flotingiz avtoriteti va holatini himoya qilish uchun.",
+      "features": [
+        {
+          "title": "Oylik muvofiqlik tekshiruvlari",
+          "description": "HOS va ELD loglarini tekshiramiz, haydovchi qoidabuzarlik va inspeksiyalarini kuzatamiz, DQ fayllarni yangilaymiz, tibbiy sertifikatlar, CDL holati, transport ro'yxatdan o'tishi, texnik xizmat va CSA ballarini nazorat qilamiz."
+        },
+        {
+          "title": "DOT auditga tayyorgarlik",
+          "description": "Hujjatlarni to'liq ko'rib chiqish, muvofiqlik bo'shliqlarini tahlil qilish va tuzatish rejalari — kompaniyangiz har qanday DOT auditga tayyor bo'lishi uchun."
+        },
+        {
+          "title": "CSA ball boshqaruvi",
+          "description": "Barcha BASIC kategoriyalar bo'yicha CSA ballaringizni doimiy monitoring va xavflarni minimallashtirish uchun strategik choralar."
+        },
+        {
+          "title": "Choraklik vazifalar",
+          "description": "Choraklik IFTA hisobotlari, yoqilg'i soliq muvofiqlashtirish, ichki xavfsizlik auditlari, haydovchi va transport hujjatlarini tekshirish, mumkin bo'lgan DOT tekshiruvlariga tayyorgarlik."
+        },
+        {
+          "title": "Yillik arizalar va yangilashlar",
+          "description": "UCR ro'yxatdan o'tish, 2290-shakl (HVUT), DOT/MC avtoritet yangilash, davlat ruxsatnomalar, yillik MVR tekshiruvlar, transport inspeksiyalari, sug'urta yangilash va BMC-91/BMC-34 tekshiruvi."
+        },
+        {
+          "title": "Baxtsiz hodisa va voqealar tahlili",
+          "description": "Baxtsiz hodisalar, voqealar va deyarli sodir bo'lgan hodisalarni tahlil qilib, qonuniyatlarni aniqlaymiz, tuzatish choralarini ko'ramiz va butun flot bo'yicha xavflarni kamaytiramiz."
+        }
+      ]
+    },
+    "ifta": {
+      "title": "IFTA va Permits",
+      "subtitle": "Aniq yoqilg'i soliq hisob-kitoblari, o'z vaqtida topshirish va ro'yxatdan o'tish xizmatlari — flotingiz IFTA talablariga to'liq mos bo'lishi uchun.",
+      "features": [
+        {
+          "title": "Oylik IFTA hisoboti",
+          "description": "Batafsil oylik yoqilg'i soliq hisob-kitoblari: umumiy masofa, umumiy yoqilg'i gallonlari, oylik o'rtacha ko'rsatkichlar va to'liq to'lov ma'lumotlari."
+        },
+        {
+          "title": "Choraklik IFTA topshirish",
+          "description": "Choraklik IFTA hisobotlarini to'liq hisoblash va o'z vaqtida topshirish: masofa, yoqilg'i sarfi, o'rtacha ko'rsatkichlar va batafsil to'lov tafsilotlari."
+        },
+        {
+          "title": "IFTA hisob ro'yxatdan o'tish",
+          "description": "Asosiy IFTA hisobingizni boshidan oxirigacha ochishni biz o'z zimmamizga olamiz — barcha kerakli hujjatlar va topshirishlar, biznesingiz soliq hisobotiga tayyor bo'lishi uchun."
+        },
+        {
+          "title": "Davlat yoqilg'i soliq hisoblar",
+          "description": "Shtatlararo yoqilg'i soliq hisoblarini ro'yxatdan o'tkazish: Nyu-York (NY), Nyu-Meksiko (NM), Oregon (OR), Kentukki (KY) va Konnektikut (CT). Har bir shtat uchun barcha kerakli shakllarni to'ldiramiz va topshiramiz."
+        }
+      ]
+    },
+    "setupmc": {
+      "title": "Setup MC",
+      "subtitle": "Yuk tashish sohasida ko'p yillik tajriba bilan biz yangi kompaniyalar ochish jarayonini mukammallashtirdik va sizga har bir qadamda yo'l ko'rsatishga tayyormiz.",
+      "features": [
+        {
+          "title": "MC va USDOT ro'yxatdan o'tish",
+          "description": "MC va USDOT raqamlarini olishda to'liq qo'llab-quvvatlash: LLC/Inc tuzish, FEIN olish va federal, shtat hamda mahalliy talablarga to'liq muvofiqlik."
+        },
+        {
+          "title": "Biznesni ro'yxatdan o'tkazish",
+          "description": "Barcha kerakli hujjatlar va yuridik qog'ozlarni rasmiylashtirish, to'g'ri avtoritet turini (common, contract yoki broker) va operatsiyalaringiz uchun mos yuk kategoriyasini tanlashda yordam."
+        },
+        {
+          "title": "Sug'urta yordami",
+          "description": "Eng yaxshi sug'urta takliflarini topishga yordam, FMCSA standartlariga muvofiqligini tekshirish va tez rasmiylashtirish uchun ishonchli sug'urta agentlarini tavsiya etish."
+        },
+        {
+          "title": "BOC-3 va avtoritet topshirish",
+          "description": "Jarayon agenti tayinlash, operatsion avtoritet arizasi va yuk tashish biznesingizni qonuniy ravishda yo'lga chiqarish uchun barcha tegishli hujjatlar."
+        }
+      ]
+    },
+    "accounting": {
+      "title": "Buxgalteriya",
+      "subtitle": "Yuk tashish kompaniyasini boshqarish qiyinchiliklarini tushunamiz — moliyaviy xizmatlarimiz operatsiyalaringizni soddalashtirish va moliyaviy barqarorlikni ta'minlash uchun mo'ljallangan.",
+      "features": [
+        {
+          "title": "To'g'ridan-to'g'ri va faktoring billing",
+          "description": "Tez va samarali hisob-faktura topshirish, faktoring muddatlariga rioya, muammolarni tezkor hal qilish va sog'lom pul oqimi uchun doimiy monitoring."
+        },
+        {
+          "title": "Haydovchi hisob-varaqlari",
+          "description": "Kompaniyangiz brendi bilan bezatilgan batafsil haftalik ish haqi varaqlari, yil boshidan hozirga qadar daromad va chegirimlar, va maxsus kanallar orqali shaffof muloqot."
+        },
+        {
+          "title": "Ma'lumot kiritish va hisobotlar",
+          "description": "Yuk ma'lumotlaridan haftalik va oylik hisobotlar, hisob-fakturalar va BOL uchun tartibli hujjat boshqaruvi, har bir haydovchi bo'yicha barcha yuklar bazasi."
+        },
+        {
+          "title": "Aging va hisob-faktura qaytarish",
+          "description": "Muddati o'tgan hisob-fakturalar bo'yicha haftalik hisobotlar, brokerlarga muntazam so'rovlar, qarz bo'yicha muzokaralar, to'lov eslatmalari va surety bond arizalariga yordam."
+        }
+      ]
+    },
+    "hiring": {
+      "title": "Haydovchilarni yollash",
+      "subtitle": "Ishonchli haydovchilarni yuk tashish kompaniyalari bilan bog'laymiz — yollashdan DOT-ga mos rasmiylashtirgunga qadar har bir bosqichni boshqaramiz.",
+      "features": [
+        {
+          "title": "Haydovchi qidirish va tekshirish",
+          "description": "Ariza ko'rib chiqish, CDL va tibbiy karta tekshiruvi, MVR va xavfsizlik tarixi tekshiruvi — har bir nomzod sizning standartlaringiz va DOT talablariga mos bo'lishini ta'minlash uchun."
+        },
+        {
+          "title": "DQ fayl tuzish",
+          "description": "Barcha DOT-ga mos rasmiylashtirish hujjatlari bilan to'liq Driver Qualification File yig'ish — birinchi kundan boshlab tartibli va auditga tayyor."
+        },
+        {
+          "title": "Xavfsizlik va muvofiqlik",
+          "description": "Haydovchilarni sinchiklab tekshirish, tartibli yozuvlar va haydovchi rulga o'tirishidan oldin barcha FMCSA talablariga rioya qilish orqali xavflarni kamaytirish."
+        },
+        {
+          "title": "O'sib borayotgan flotlar uchun",
+          "description": "Owner-operator birinchi haydovchini yollamoqdami, kichik flot kengaymoqdami yoki yangi MC avtoritet jamoa yig'moqdami — jarayonimiz sizning ehtiyojlaringizga moslashadi."
+        }
+      ]
     }
   },
   "platforms": {

@@ -1,16 +1,36 @@
 import { useState, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 import { motion, AnimatePresence } from 'framer-motion'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { cn } from '@/lib/utils'
 import { Container, Button, FalconLogo } from '@/components/common'
 import { languages, type LanguageCode } from '@/i18n/config'
 import { COMPANY_INFO } from '@/constants/content'
+
+function useHashNav() {
+  const location = useLocation()
+  const navigate = useNavigate()
+
+  return (hash: string, callback?: () => void) => {
+    callback?.()
+    if (location.pathname === '/') {
+      const el = document.getElementById(hash)
+      el?.scrollIntoView({ behavior: 'smooth' })
+    } else {
+      navigate('/')
+      setTimeout(() => {
+        document.getElementById(hash)?.scrollIntoView({ behavior: 'smooth' })
+      }, 300)
+    }
+  }
+}
 
 export default function Header() {
   const { t, i18n } = useTranslation()
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [isLangMenuOpen, setIsLangMenuOpen] = useState(false)
+  const hashNav = useHashNav()
 
   useEffect(() => {
     const handleScroll = () => {
@@ -28,9 +48,9 @@ export default function Header() {
   const currentLang = languages.find((l) => l.code === i18n.language) || languages[0]
 
   const navLinks = [
-    { href: '#services', label: t('nav.services') },
-    { href: '#about', label: t('nav.about') },
-    { href: '#contact', label: t('nav.contact') },
+    { hash: 'services', label: t('nav.services') },
+    { hash: 'about', label: t('nav.about') },
+    { hash: 'contact', label: t('nav.contact') },
   ]
 
   return (
@@ -45,7 +65,7 @@ export default function Header() {
       <Container>
         <nav className="flex items-center justify-between">
           {/* Logo */}
-          <a href="#" className="flex items-center gap-2 group">
+          <Link to="/" className="flex items-center gap-2 group">
             <motion.div
               whileHover={{ scale: 1.05, rotate: 3 }}
               whileTap={{ scale: 0.95 }}
@@ -56,14 +76,18 @@ export default function Header() {
             <span className="text-xl font-bold text-text-primary hidden sm:block">
               {COMPANY_INFO.name}
             </span>
-          </a>
+          </Link>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-8">
             {navLinks.map((link) => (
               <a
-                key={link.href}
-                href={link.href}
+                key={link.hash}
+                href={`/#${link.hash}`}
+                onClick={(e) => {
+                  e.preventDefault()
+                  hashNav(link.hash)
+                }}
                 className="text-text-secondary hover:text-neon-cyan transition-colors relative group"
               >
                 {link.label}
@@ -132,7 +156,7 @@ export default function Header() {
               variant="primary"
               size="sm"
               className="hidden md:flex"
-              onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+              onClick={() => hashNav('contact')}
             >
               {t('nav.getConsultation')}
             </Button>
@@ -166,9 +190,12 @@ export default function Header() {
               <div className="flex flex-col gap-4 pt-4">
                 {navLinks.map((link) => (
                   <a
-                    key={link.href}
-                    href={link.href}
-                    onClick={() => setIsMobileMenuOpen(false)}
+                    key={link.hash}
+                    href={`/#${link.hash}`}
+                    onClick={(e) => {
+                      e.preventDefault()
+                      hashNav(link.hash, () => setIsMobileMenuOpen(false))
+                    }}
                     className="text-text-secondary hover:text-neon-cyan transition-colors py-2"
                   >
                     {link.label}
@@ -178,8 +205,7 @@ export default function Header() {
                   variant="primary"
                   className="w-full mt-2"
                   onClick={() => {
-                    setIsMobileMenuOpen(false)
-                    document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })
+                    hashNav('contact', () => setIsMobileMenuOpen(false))
                   }}
                 >
                   {t('nav.getConsultation')}

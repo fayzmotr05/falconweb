@@ -52,27 +52,192 @@
     "subtitle": "Comprehensive solutions for your trucking business",
     "eld": {
       "title": "ELD Management",
-      "description": "Professional installation, 24/7 monitoring, and rapid support with 1-minute response time"
+      "description": "Full ELD compliance support with fast setup, real-time monitoring, and around-the-clock assistance"
     },
     "safety": {
       "title": "Safety & Compliance",
-      "description": "DOT audits preparation, HOS analysis, DQ files management, and regulatory compliance"
-    },
-    "dispatch": {
-      "title": "Dispatch Services",
-      "description": "Load search, broker communication, document handling, and billing management"
-    },
-    "fleet": {
-      "title": "Fleet Management",
-      "description": "Complete fleet control, analytics, coordination, and optimization services"
+      "description": "Complete regulatory compliance including DOT audits, HOS review, DQ file management, and CSA monitoring"
     },
     "ifta": {
       "title": "IFTA & Permits",
-      "description": "KYU, NY HUT calculations, IFTA submissions, and permit management"
+      "description": "Accurate fuel tax reporting, IFTA registration, state accounts, and quarterly filing services"
     },
-    "integrations": {
-      "title": "IT Integrations",
-      "description": "Highway, Macropoint, Trucker Tools, Project44 and other platform integrations"
+    "setupmc": {
+      "title": "Setup MC",
+      "description": "End-to-end motor carrier authority setup, DOT registration, and business formation services"
+    },
+    "accounting": {
+      "title": "Accounting",
+      "description": "Billing, driver paystubs, financial reporting, and invoice management for trucking companies"
+    },
+    "hiring": {
+      "title": "Hiring Drivers",
+      "description": "Driver recruitment, background screening, DQF setup, and DOT-compliant onboarding"
+    }
+  },
+  "serviceDetail": {
+    "backToServices": "Back to Services",
+    "learnMore": "Learn More",
+    "cta": {
+      "title": "Ready to Get Started?",
+      "subtitle": "Contact us today for a free consultation and let us handle the details for you",
+      "button": "Get Free Consultation"
+    },
+    "eld": {
+      "title": "ELD / Logbook Management",
+      "subtitle": "We deliver complete ELD compliance support for carriers and owner-operators, featuring rapid setup, live assistance, and dependable reporting.",
+      "features": [
+        {
+          "title": "Around-the-Clock Support",
+          "description": "Our team is on standby 24/7 to assist with ELD issues, login troubles, HOS inquiries, wake-up calls, connectivity disruptions, and device failures. When necessary, we walk drivers through switching to paper logs and liaise directly with the ELD provider."
+        },
+        {
+          "title": "Logbook Reviews & Audits",
+          "description": "Every time your drivers' logs sync, we review them for accuracy and FMCSA compliance. We help resolve HOS discrepancies, cross-reference logs against BOLs and fuel receipts, and keep your fleet ready for inspections at all times."
+        },
+        {
+          "title": "Active Monitoring & Alerts",
+          "description": "We keep a close eye on driver activity, ELD connectivity, and remaining duty hours. If anything needs attention — low available hours, connection problems, or unresponsive drivers — we notify both the driver and the company right away."
+        },
+        {
+          "title": "Training & Consulting",
+          "description": "We provide hands-on ELD training for drivers and dispatchers, break down FMCSA regulations in plain language, and offer guidance during roadside inspections. Every new driver gets full onboarding support."
+        },
+        {
+          "title": "FMCSA-Registered Devices",
+          "description": "We exclusively use ELD systems listed on the official FMCSA registry, guaranteeing reliable and regulation-compliant log recording for your fleet."
+        },
+        {
+          "title": "IFTA Mileage Reporting",
+          "description": "Using ELD mileage data and fuel records, we prepare precise quarterly IFTA reports so you stay compliant without the hassle."
+        },
+        {
+          "title": "Drug Testing Coordination",
+          "description": "We assist in scheduling and coordinating DOT-compliant drug screenings for new drivers joining your fleet."
+        },
+        {
+          "title": "Quick Setup (15–60 Minutes)",
+          "description": "Sign up online or by phone. We configure your fleet, connect your devices, and train your team — all within an hour."
+        }
+      ]
+    },
+    "safety": {
+      "title": "Safety & Compliance",
+      "subtitle": "Full-spectrum regulatory compliance management covering FMCSA, DOT, and state agency requirements to protect your fleet's operating authority.",
+      "features": [
+        {
+          "title": "Monthly Compliance Reviews",
+          "description": "We review Hours of Service and ELD logs, track driver violations and inspection records, keep Driver Qualification Files current, verify medical certificates and CDL status, and monitor vehicle registrations, maintenance records, and CSA scores."
+        },
+        {
+          "title": "DOT Audit Preparation",
+          "description": "Comprehensive document review, compliance gap analysis, and corrective action planning to ensure your company is ready for any DOT audit."
+        },
+        {
+          "title": "CSA Score Management",
+          "description": "Ongoing monitoring of your CSA scores across all BASIC categories, with strategic corrective measures to minimize risk and keep your fleet in good standing."
+        },
+        {
+          "title": "Quarterly Compliance Tasks",
+          "description": "Quarterly IFTA return filing and fuel tax reconciliation, internal safety audits, thorough review of driver and vehicle records, and preparation of documentation for potential DOT audits."
+        },
+        {
+          "title": "Annual Filings & Renewals",
+          "description": "UCR registration, Form 2290 (HVUT) filing, DOT/MC authority renewals, state permits, annual driver MVR reviews, vehicle inspections, insurance renewals, and BMC-91/BMC-34 verification."
+        },
+        {
+          "title": "Accident & Incident Review",
+          "description": "We analyze accidents, incidents, and near-miss reports to identify patterns, take corrective actions, and reduce risk exposure across your fleet."
+        }
+      ]
+    },
+    "ifta": {
+      "title": "IFTA & Permits",
+      "subtitle": "Thorough fuel tax calculations, timely filings, and registration services to keep your fleet fully compliant with IFTA regulations.",
+      "features": [
+        {
+          "title": "Monthly IFTA Reporting",
+          "description": "Detailed monthly fuel tax calculations including total mileage, total fuel gallons, monthly averages, and complete payment breakdowns for your records."
+        },
+        {
+          "title": "Quarterly IFTA Filing",
+          "description": "Full calculation and on-time submission of quarterly IFTA reports covering total mileage, fuel consumption, monthly averages, and itemized payment details."
+        },
+        {
+          "title": "IFTA Account Registration",
+          "description": "We handle setting up your primary IFTA account from start to finish — managing all required paperwork and submissions so your business is ready for fuel tax reporting."
+        },
+        {
+          "title": "State Fuel Tax Accounts",
+          "description": "Registration services for state-specific fuel tax accounts including New York (NY), New Mexico (NM), Oregon (OR), Kentucky (KY), and Connecticut (CT). We complete and submit all necessary forms for each state."
+        }
+      ]
+    },
+    "setupmc": {
+      "title": "Setup MC",
+      "subtitle": "With years of hands-on trucking industry experience, we've perfected the process of launching new motor carriers and are ready to guide you every step of the way.",
+      "features": [
+        {
+          "title": "MC & USDOT Registration",
+          "description": "Complete support for obtaining your Motor Carrier and USDOT numbers, including LLC/Inc formation, FEIN acquisition, and full compliance with federal, state, and local requirements."
+        },
+        {
+          "title": "Business Registration",
+          "description": "We handle all essential paperwork and legal documents, help you choose the right authority type (common, contract, or broker) and the appropriate hauling category for your operations."
+        },
+        {
+          "title": "Insurance Assistance",
+          "description": "We help you find the best insurance quotes, verify that coverage meets FMCSA standards, and recommend trusted insurance agents and companies for fast, efficient processing."
+        },
+        {
+          "title": "BOC-3 & Authority Filing",
+          "description": "Process agent designation filing, operating authority applications, and all associated documentation to get your trucking business legally on the road."
+        }
+      ]
+    },
+    "accounting": {
+      "title": "Accounting",
+      "subtitle": "We understand the challenges of running a trucking company — our comprehensive financial services are designed to simplify your operations and secure your bottom line.",
+      "features": [
+        {
+          "title": "Direct & Factoring Billing",
+          "description": "Quick and efficient invoice submission, factoring deadline adherence, prompt follow-up on issues, and continuous monitoring to keep your cash flow healthy."
+        },
+        {
+          "title": "Driver Statements & Paystubs",
+          "description": "Detailed weekly paystubs customized with your company branding, year-to-date earnings and deductions, and transparent communication via dedicated channels."
+        },
+        {
+          "title": "Data Entry & Reporting",
+          "description": "Weekly and monthly reports generated from your load data, organized document management for invoices and BOLs, and a comprehensive database tracking all loads per driver."
+        },
+        {
+          "title": "Aging & Invoice Recovery",
+          "description": "Weekly aging reports for outstanding invoices, regular follow-ups with brokers, negotiation of overdue payments, payment reminders to prevent chargebacks, and support for surety bond applications."
+        }
+      ]
+    },
+    "hiring": {
+      "title": "Hiring Drivers",
+      "subtitle": "We connect dependable drivers with established trucking companies, handling every step from recruitment through DOT-compliant onboarding.",
+      "features": [
+        {
+          "title": "Driver Recruitment & Screening",
+          "description": "Application review, CDL and medical card verification, MVR and safety history checks — all to ensure every candidate meets your standards and DOT requirements."
+        },
+        {
+          "title": "Driver Qualification File Setup",
+          "description": "Complete DQF assembly including all DOT-compliant onboarding documentation, organized and audit-ready from day one."
+        },
+        {
+          "title": "Compliance & Safety Assurance",
+          "description": "Reduced safety and audit risk through proper driver vetting, organized records, and adherence to all FMCSA regulations before a driver gets behind the wheel."
+        },
+        {
+          "title": "Tailored for Growing Fleets",
+          "description": "Whether you're an owner-operator hiring your first driver, a small fleet scaling up, or a new MC authority building your team — our process adapts to your needs for faster, compliant onboarding."
+        }
+      ]
     }
   },
   "platforms": {

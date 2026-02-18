@@ -1,16 +1,31 @@
 import { useTranslation } from 'react-i18next'
 import { motion } from 'framer-motion'
+import { useLocation, useNavigate } from 'react-router-dom'
 import { Container } from '@/components/common'
 import { COMPANY_INFO } from '@/constants/content'
 
 export default function Footer() {
   const { t } = useTranslation()
   const currentYear = new Date().getFullYear()
+  const location = useLocation()
+  const navigate = useNavigate()
+
+  const handleHashNav = (hash: string) => (e: React.MouseEvent) => {
+    e.preventDefault()
+    if (location.pathname === '/') {
+      document.getElementById(hash)?.scrollIntoView({ behavior: 'smooth' })
+    } else {
+      navigate('/')
+      setTimeout(() => {
+        document.getElementById(hash)?.scrollIntoView({ behavior: 'smooth' })
+      }, 300)
+    }
+  }
 
   const navLinks = [
-    { href: '#services', label: t('footer.links.services') },
-    { href: '#about', label: t('footer.links.about') },
-    { href: '#contact', label: t('footer.links.contact') },
+    { hash: 'services', label: t('footer.links.services') },
+    { hash: 'about', label: t('footer.links.about') },
+    { hash: 'contact', label: t('footer.links.contact') },
   ]
 
   return (
@@ -49,9 +64,10 @@ export default function Footer() {
               <h4 className="text-lg font-semibold text-text-primary mb-4">Quick Links</h4>
               <ul className="space-y-3">
                 {navLinks.map((link) => (
-                  <li key={link.href}>
+                  <li key={link.hash}>
                     <a
-                      href={link.href}
+                      href={`/#${link.hash}`}
+                      onClick={handleHashNav(link.hash)}
                       className="text-text-secondary hover:text-neon-cyan transition-colors text-sm"
                     >
                       {link.label}

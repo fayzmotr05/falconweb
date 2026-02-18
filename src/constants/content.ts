@@ -31,10 +31,10 @@ export const TIMELINE = [
 export const SERVICES = [
   { key: 'eld', icon: 'eld' },
   { key: 'safety', icon: 'shield' },
-  { key: 'dispatch', icon: 'dispatch' },
-  { key: 'fleet', icon: 'fleet' },
   { key: 'ifta', icon: 'document' },
-  { key: 'integrations', icon: 'integration' },
+  { key: 'setupmc', icon: 'setupmc' },
+  { key: 'accounting', icon: 'accounting' },
+  { key: 'hiring', icon: 'hiring' },
 ] as const
 
 export const PLATFORMS = [
