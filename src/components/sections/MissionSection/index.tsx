@@ -229,26 +229,11 @@ export default function MissionSection() {
           }}
         />
 
-        {/* Floating background elements */}
+        {/* Background elements */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <motion.div
-            className="absolute top-1/4 left-10 w-64 h-64 bg-neon-cyan/5 rounded-full blur-[100px]"
-            animate={{
-              y: [0, 30, 0],
-              scale: [1, 1.1, 1],
-            }}
-            transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
-          />
-          <motion.div
-            className="absolute bottom-1/4 right-10 w-64 h-64 bg-neon-purple/5 rounded-full blur-[100px]"
-            animate={{
-              y: [0, -30, 0],
-              scale: [1, 1.2, 1],
-            }}
-            transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
-          />
+          <div className="absolute top-1/4 left-10 w-64 h-64 bg-neon-cyan/5 rounded-full blur-[40px]" />
+          <div className="absolute bottom-1/4 right-10 w-64 h-64 bg-neon-purple/5 rounded-full blur-[40px]" />
         </div>
-
         <Container>
           {/* Section header */}
           <motion.div

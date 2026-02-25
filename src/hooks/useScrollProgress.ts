@@ -4,22 +4,36 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
 gsap.registerPlugin(ScrollTrigger)
 
-// Global page scroll progress
+// Global page scroll progress - RAF-throttled
 export function useScrollProgress() {
   const [progress, setProgress] = useState(0)
 
   useEffect(() => {
+    let rafId = 0
+    let ticking = false
+
     const updateProgress = () => {
       const scrollTop = window.scrollY
       const docHeight = document.documentElement.scrollHeight - window.innerHeight
       const scrollProgress = docHeight > 0 ? scrollTop / docHeight : 0
       setProgress(Math.min(1, Math.max(0, scrollProgress)))
+      ticking = false
     }
 
-    window.addEventListener('scroll', updateProgress, { passive: true })
+    const onScroll = () => {
+      if (!ticking) {
+        rafId = requestAnimationFrame(updateProgress)
+        ticking = true
+      }
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true })
     updateProgress()
 
-    return () => window.removeEventListener('scroll', updateProgress)
+    return () => {
+      window.removeEventListener('scroll', onScroll)
+      cancelAnimationFrame(rafId)
+    }
   }, [])
 
   return progress

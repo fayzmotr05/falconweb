@@ -3,6 +3,7 @@ import { gsap } from '@/animations/gsapConfig'
 
 export default function DataFlowLines() {
   const svgRef = useRef<SVGSVGElement>(null)
+  const animationRef = useRef<gsap.core.Tween[]>([])
 
   useEffect(() => {
     if (!svgRef.current) return
@@ -28,9 +29,23 @@ export default function DataFlowLines() {
       })
     })
 
+    // Pause/resume dots based on visibility
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          animationRef.current.forEach((tween) => tween.play())
+        } else {
+          animationRef.current.forEach((tween) => tween.pause())
+        }
+      },
+      { threshold: 0 }
+    )
+
+    if (svgRef.current) observer.observe(svgRef.current)
+
     // Animate dots along paths
     dots.forEach((dot, i) => {
-      gsap.to(dot, {
+      const tween = gsap.to(dot, {
         motionPath: {
           path: paths[i % paths.length] as SVGPathElement,
           align: paths[i % paths.length] as SVGPathElement,
@@ -41,10 +56,13 @@ export default function DataFlowLines() {
         ease: 'none',
         delay: i * 0.5,
       })
+      animationRef.current.push(tween)
     })
 
     return () => {
+      observer.disconnect()
       gsap.killTweensOf([paths, dots])
+      animationRef.current = []
     }
   }, [])
 
@@ -62,23 +80,15 @@ export default function DataFlowLines() {
           <stop offset="50%" stopColor="var(--color-neon-cyan)" stopOpacity="0.6" />
           <stop offset="100%" stopColor="var(--color-neon-cyan)" stopOpacity="0" />
         </linearGradient>
-        <filter id="glow">
-          <feGaussianBlur stdDeviation="3" result="coloredBlur" />
-          <feMerge>
-            <feMergeNode in="coloredBlur" />
-            <feMergeNode in="SourceGraphic" />
-          </feMerge>
-        </filter>
       </defs>
 
-      {/* Data flow paths */}
+      {/* Data flow paths - removed expensive feGaussianBlur filter */}
       <path
         className="flow-path"
         d="M 0 400 Q 300 350 600 400 T 1200 400"
         fill="none"
         stroke="url(#lineGradient)"
         strokeWidth="2"
-        filter="url(#glow)"
         opacity="0.4"
       />
       <path
@@ -87,23 +97,12 @@ export default function DataFlowLines() {
         fill="none"
         stroke="url(#lineGradient)"
         strokeWidth="1.5"
-        filter="url(#glow)"
-        opacity="0.3"
-      />
-      <path
-        className="flow-path"
-        d="M 0 500 Q 200 600 500 500 T 1200 550"
-        fill="none"
-        stroke="url(#lineGradient)"
-        strokeWidth="1.5"
-        filter="url(#glow)"
         opacity="0.3"
       />
 
       {/* Flowing dots */}
-      <circle className="flow-dot" r="4" fill="var(--color-neon-cyan)" opacity="0.8" filter="url(#glow)" />
-      <circle className="flow-dot" r="3" fill="var(--color-neon-cyan)" opacity="0.6" filter="url(#glow)" />
-      <circle className="flow-dot" r="3" fill="var(--color-neon-cyan)" opacity="0.6" filter="url(#glow)" />
+      <circle className="flow-dot" r="4" fill="var(--color-neon-cyan)" opacity="0.8" />
+      <circle className="flow-dot" r="3" fill="var(--color-neon-cyan)" opacity="0.6" />
     </svg>
   )
 }

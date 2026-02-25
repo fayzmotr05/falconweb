@@ -1,8 +1,8 @@
-import { useState, useRef, useEffect, useCallback } from 'react'
+import { useState, useRef, useCallback } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useForm } from 'react-hook-form'
 import { motion, useInView, AnimatePresence, useMotionValue, useSpring } from 'framer-motion'
-import { Container, SectionWrapper, SplitText } from '@/components/common'
+import { Container, SectionWrapper } from '@/components/common'
 import { COMPANY_INFO } from '@/constants/content'
 import { useReducedMotion } from '@/hooks/useReducedMotion'
 
@@ -16,138 +16,6 @@ interface FormData {
 
 // Google Apps Script Web App URL
 const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbz8VIL1vpDEMUSId-r43yNIl_6AK77-ssmPTmSxxlmkZKeFPco5gH5j57ljrTZ74BzL/exec'
-
-// Particle system for background
-function ParticleBackground() {
-  const canvasRef = useRef<HTMLCanvasElement>(null)
-  const mouseRef = useRef({ x: 0, y: 0 })
-  const particlesRef = useRef<Array<{
-    x: number
-    y: number
-    vx: number
-    vy: number
-    size: number
-    color: string
-    alpha: number
-  }>>([])
-
-  useEffect(() => {
-    const canvas = canvasRef.current
-    if (!canvas) return
-
-    const ctx = canvas.getContext('2d')
-    if (!ctx) return
-
-    const colors = ['#00d4ff', '#a855f7', '#10b981', '#f472b6']
-
-    const resize = () => {
-      canvas.width = canvas.offsetWidth * window.devicePixelRatio
-      canvas.height = canvas.offsetHeight * window.devicePixelRatio
-      ctx.scale(window.devicePixelRatio, window.devicePixelRatio)
-    }
-    resize()
-    window.addEventListener('resize', resize)
-
-    // Initialize particles
-    const particleCount = 80
-    for (let i = 0; i < particleCount; i++) {
-      particlesRef.current.push({
-        x: Math.random() * canvas.offsetWidth,
-        y: Math.random() * canvas.offsetHeight,
-        vx: (Math.random() - 0.5) * 0.5,
-        vy: (Math.random() - 0.5) * 0.5,
-        size: Math.random() * 2 + 1,
-        color: colors[Math.floor(Math.random() * colors.length)],
-        alpha: Math.random() * 0.5 + 0.2,
-      })
-    }
-
-    // Track mouse
-    const handleMouseMove = (e: MouseEvent) => {
-      const rect = canvas.getBoundingClientRect()
-      mouseRef.current = {
-        x: e.clientX - rect.left,
-        y: e.clientY - rect.top,
-      }
-    }
-    canvas.addEventListener('mousemove', handleMouseMove)
-
-    let animationId: number
-
-    const animate = () => {
-      ctx.clearRect(0, 0, canvas.offsetWidth, canvas.offsetHeight)
-
-      particlesRef.current.forEach((particle) => {
-        // Mouse attraction
-        const dx = mouseRef.current.x - particle.x
-        const dy = mouseRef.current.y - particle.y
-        const dist = Math.sqrt(dx * dx + dy * dy)
-
-        if (dist < 150) {
-          const force = (150 - dist) / 150
-          particle.vx += (dx / dist) * force * 0.02
-          particle.vy += (dy / dist) * force * 0.02
-        }
-
-        // Update position
-        particle.x += particle.vx
-        particle.y += particle.vy
-
-        // Damping
-        particle.vx *= 0.99
-        particle.vy *= 0.99
-
-        // Wrap around
-        if (particle.x < 0) particle.x = canvas.offsetWidth
-        if (particle.x > canvas.offsetWidth) particle.x = 0
-        if (particle.y < 0) particle.y = canvas.offsetHeight
-        if (particle.y > canvas.offsetHeight) particle.y = 0
-
-        // Draw particle
-        ctx.beginPath()
-        ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2)
-        ctx.fillStyle = particle.color
-        ctx.globalAlpha = particle.alpha
-        ctx.fill()
-
-        // Draw connections
-        particlesRef.current.forEach((other) => {
-          const dx2 = other.x - particle.x
-          const dy2 = other.y - particle.y
-          const dist2 = Math.sqrt(dx2 * dx2 + dy2 * dy2)
-
-          if (dist2 < 100) {
-            ctx.beginPath()
-            ctx.moveTo(particle.x, particle.y)
-            ctx.lineTo(other.x, other.y)
-            ctx.strokeStyle = particle.color
-            ctx.globalAlpha = (1 - dist2 / 100) * 0.2
-            ctx.stroke()
-          }
-        })
-      })
-
-      ctx.globalAlpha = 1
-      animationId = requestAnimationFrame(animate)
-    }
-
-    animate()
-
-    return () => {
-      window.removeEventListener('resize', resize)
-      canvas.removeEventListener('mousemove', handleMouseMove)
-      cancelAnimationFrame(animationId)
-    }
-  }, [])
-
-  return (
-    <canvas
-      ref={canvasRef}
-      className="absolute inset-0 w-full h-full pointer-events-auto"
-      style={{ opacity: 0.6 }}
-    />
-  )
-}
 
 // Simple static input (used on mobile)
 function StaticInput({
@@ -550,39 +418,10 @@ export default function CTASection() {
   return (
     <SectionWrapper id="contact" spacing="xl">
       <div ref={sectionRef} className="relative min-h-screen">
-        {/* Particle background - only on desktop for performance */}
-        {!shouldReduceAnimations && (
-          <div className="absolute inset-0 overflow-hidden">
-            <ParticleBackground />
-          </div>
-        )}
-
-        {/* Gradient orbs - simplified on mobile (no blur, no animation) */}
+        {/* Gradient orbs - static for performance */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          {shouldReduceAnimations ? (
-            <>
-              <div className="absolute top-1/4 left-1/4 w-[280px] h-[280px] rounded-full bg-neon-cyan/5" />
-              <div className="absolute bottom-1/4 right-1/4 w-[240px] h-[240px] rounded-full bg-neon-purple/5" />
-            </>
-          ) : (
-            <>
-              <motion.div
-                className="absolute top-1/4 left-1/4 w-[600px] h-[600px] bg-neon-cyan/10 rounded-full blur-[150px]"
-                animate={{ x: [0, 50, 0], y: [0, 30, 0], scale: [1, 1.2, 1] }}
-                transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut' }}
-              />
-              <motion.div
-                className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-neon-purple/10 rounded-full blur-[120px]"
-                animate={{ x: [0, -40, 0], y: [0, -20, 0], scale: [1, 1.3, 1] }}
-                transition={{ duration: 12, repeat: Infinity, ease: 'easeInOut', delay: 2 }}
-              />
-              <motion.div
-                className="absolute top-1/2 right-1/3 w-[400px] h-[400px] bg-neon-green/5 rounded-full blur-[100px]"
-                animate={{ x: [0, 30, 0], scale: [1, 1.1, 1] }}
-                transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut', delay: 4 }}
-              />
-            </>
-          )}
+          <div className="absolute top-1/4 left-1/4 w-[400px] h-[400px] bg-neon-cyan/8 rounded-full blur-[60px]" />
+          <div className="absolute bottom-1/4 right-1/4 w-[350px] h-[350px] bg-neon-purple/8 rounded-full blur-[50px]" />
         </div>
 
         <Container>
@@ -595,15 +434,9 @@ export default function CTASection() {
               transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
               className="text-center mb-16"
             >
-              <SplitText
-                as="h2"
-                animation="fadeUp"
-                type="words"
-                stagger={0.05}
-                className="text-3xl md:text-4xl lg:text-5xl font-bold text-text-primary mb-4"
-              >
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-text-primary mb-4">
                 {t('cta.title')}
-              </SplitText>
+              </h2>
               <motion.p
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}

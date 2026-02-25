@@ -32,9 +32,7 @@ export const SERVICES = [
   { key: 'eld', icon: 'eld' },
   { key: 'safety', icon: 'shield' },
   { key: 'ifta', icon: 'document' },
-  { key: 'setupmc', icon: 'setupmc' },
   { key: 'accounting', icon: 'accounting' },
-  { key: 'hiring', icon: 'hiring' },
 ] as const
 
 export const PLATFORMS = [

@@ -1,7 +1,7 @@
 import { useRef, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { motion, useInView } from 'framer-motion'
-import { Container, SectionWrapper, SplitText, Card3D } from '@/components/common'
+import { Container, SectionWrapper, Card3D } from '@/components/common'
 import { INTEGRATIONS } from '@/constants/content'
 
 // 3D Dashboard Mockup Component
@@ -51,9 +51,15 @@ function DashboardMockup({
           animate={{ scale: isHovered ? 1.2 : 1, transition: { delay: 0.1 } }}
         />
         <div className="flex-1" />
-        <div className="text-xs text-text-muted font-mono">
-          {type === 'sba' ? 'sba-eld.com' : 'securepath.com'}
-        </div>
+        <a
+          href={type === 'sba' ? 'https://clearpatheld.com' : 'https://securepatheld.com'}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-xs text-text-muted font-mono hover:text-neon-cyan transition-colors"
+          onClick={(e) => e.stopPropagation()}
+        >
+          {type === 'sba' ? 'clearpatheld.com' : 'securepatheld.com'}
+        </a>
       </div>
 
       {type === 'sba' ? (
@@ -269,6 +275,15 @@ function PlatformCard({
             }}
           />
 
+          {/* Platform logo */}
+          <div className="relative mb-4">
+            <img
+              src={platformKey === 'sba' ? '/clearpath-logo.jpg' : '/securepath-logo.svg'}
+              alt={t(`platforms.${platformKey}.title`)}
+              className="h-12 w-auto object-contain rounded-lg"
+            />
+          </div>
+
           {/* Platform badge */}
           <motion.div
             className="relative inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6"
@@ -338,22 +353,8 @@ export default function PlatformsSection() {
       <div ref={sectionRef} className="relative">
         {/* Background decorations */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <motion.div
-            className="absolute top-1/4 left-0 w-[500px] h-[500px] bg-neon-cyan/5 rounded-full blur-[150px]"
-            animate={{
-              x: [0, 50, 0],
-              opacity: [0.3, 0.5, 0.3],
-            }}
-            transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
-          />
-          <motion.div
-            className="absolute bottom-1/4 right-0 w-[500px] h-[500px] bg-neon-purple/5 rounded-full blur-[150px]"
-            animate={{
-              x: [0, -50, 0],
-              opacity: [0.3, 0.5, 0.3],
-            }}
-            transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut', delay: 2 }}
-          />
+          <div className="absolute top-1/4 left-0 w-[400px] h-[400px] bg-neon-cyan/5 rounded-full blur-[60px]" />
+          <div className="absolute bottom-1/4 right-0 w-[400px] h-[400px] bg-neon-purple/5 rounded-full blur-[60px]" />
         </div>
 
         <Container>
@@ -365,15 +366,9 @@ export default function PlatformsSection() {
             transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
             className="text-center mb-12 md:mb-16"
           >
-            <SplitText
-              as="h2"
-              animation="fadeUp"
-              type="words"
-              stagger={0.05}
-              className="text-3xl md:text-4xl lg:text-5xl font-bold text-text-primary mb-4"
-            >
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-text-primary mb-4">
               {t('platforms.title')}
-            </SplitText>
+            </h2>
             <motion.p
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}

@@ -4,7 +4,7 @@ import { motion, useInView } from 'framer-motion'
 import gsap from 'gsap'
 import { Container, SectionWrapper, AnimatedCounter, Card3D, SplitText } from '@/components/common'
 import { STATS } from '@/constants/content'
-import { useReducedMotion } from '@/hooks/useReducedMotion'
+
 
 // Animated SVG icon component with stroke animation
 function AnimatedIcon({ iconKey, isVisible }: { iconKey: string; isVisible: boolean }) {
@@ -208,42 +208,14 @@ function StatCard({ stat, index }: { stat: { readonly key: string; readonly valu
 export default function StatsSection() {
   const { t } = useTranslation()
   const sectionRef = useRef<HTMLDivElement>(null)
-  const { shouldReduceAnimations } = useReducedMotion()
-
   return (
     <SectionWrapper id="stats" background="darker" spacing="lg">
       <div ref={sectionRef} className="relative">
-        {/* Background decorations - only on desktop for performance */}
-        {!shouldReduceAnimations && (
-          <div className="absolute inset-0 overflow-hidden pointer-events-none hidden md:block">
-            <motion.div
-              className="absolute top-0 left-1/4 w-96 h-96 bg-neon-cyan/5 rounded-full blur-[120px]"
-              animate={{
-                scale: [1, 1.2, 1],
-                opacity: [0.3, 0.5, 0.3],
-              }}
-              transition={{
-                duration: 4,
-                repeat: Infinity,
-                ease: 'easeInOut',
-              }}
-            />
-            <motion.div
-              className="absolute bottom-0 right-1/4 w-80 h-80 bg-neon-purple/5 rounded-full blur-[100px]"
-              animate={{
-                scale: [1, 1.3, 1],
-                opacity: [0.2, 0.4, 0.2],
-              }}
-              transition={{
-                duration: 5,
-                repeat: Infinity,
-                ease: 'easeInOut',
-                delay: 1,
-              }}
-            />
-          </div>
-        )}
-
+        {/* Background decorations */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none hidden md:block">
+          <div className="absolute top-0 left-1/4 w-96 h-96 bg-neon-cyan/5 rounded-full blur-[50px]" />
+          <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-neon-purple/5 rounded-full blur-[40px]" />
+        </div>
         <Container>
           {/* Section header with split text */}
           <motion.div

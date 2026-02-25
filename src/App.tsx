@@ -2,9 +2,7 @@ import { lazy, Suspense, useEffect } from 'react'
 import { Routes, Route, useLocation } from 'react-router-dom'
 import Header from '@/components/layout/Header'
 import Footer from '@/components/layout/Footer'
-import CustomCursor from '@/components/common/CustomCursor'
 import ScrollProgress from '@/components/common/ScrollProgress'
-import { useSmoothScroll } from '@/hooks/useSmoothScroll'
 import HomePage from '@/pages/HomePage'
 
 const ServiceDetailPage = lazy(() => import('@/pages/ServiceDetailPage'))
@@ -20,11 +18,8 @@ function ScrollToTop() {
 }
 
 function App() {
-  useSmoothScroll()
-
   return (
     <>
-      <CustomCursor />
       <ScrollProgress />
       <ScrollToTop />
 

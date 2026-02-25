@@ -62,17 +62,9 @@
       "title": "IFTA & Permits",
       "description": "Accurate fuel tax reporting, IFTA registration, state accounts, and quarterly filing services"
     },
-    "setupmc": {
-      "title": "Setup MC",
-      "description": "End-to-end motor carrier authority setup, DOT registration, and business formation services"
-    },
     "accounting": {
       "title": "Accounting",
       "description": "Billing, driver paystubs, financial reporting, and invoice management for trucking companies"
-    },
-    "hiring": {
-      "title": "Hiring Drivers",
-      "description": "Driver recruitment, background screening, DQF setup, and DOT-compliant onboarding"
     }
   },
   "serviceDetail": {
@@ -173,28 +165,6 @@
         }
       ]
     },
-    "setupmc": {
-      "title": "Setup MC",
-      "subtitle": "With years of hands-on trucking industry experience, we've perfected the process of launching new motor carriers and are ready to guide you every step of the way.",
-      "features": [
-        {
-          "title": "MC & USDOT Registration",
-          "description": "Complete support for obtaining your Motor Carrier and USDOT numbers, including LLC/Inc formation, FEIN acquisition, and full compliance with federal, state, and local requirements."
-        },
-        {
-          "title": "Business Registration",
-          "description": "We handle all essential paperwork and legal documents, help you choose the right authority type (common, contract, or broker) and the appropriate hauling category for your operations."
-        },
-        {
-          "title": "Insurance Assistance",
-          "description": "We help you find the best insurance quotes, verify that coverage meets FMCSA standards, and recommend trusted insurance agents and companies for fast, efficient processing."
-        },
-        {
-          "title": "BOC-3 & Authority Filing",
-          "description": "Process agent designation filing, operating authority applications, and all associated documentation to get your trucking business legally on the road."
-        }
-      ]
-    },
     "accounting": {
       "title": "Accounting",
       "subtitle": "We understand the challenges of running a trucking company — our comprehensive financial services are designed to simplify your operations and secure your bottom line.",
@@ -214,28 +184,6 @@
         {
           "title": "Aging & Invoice Recovery",
           "description": "Weekly aging reports for outstanding invoices, regular follow-ups with brokers, negotiation of overdue payments, payment reminders to prevent chargebacks, and support for surety bond applications."
-        }
-      ]
-    },
-    "hiring": {
-      "title": "Hiring Drivers",
-      "subtitle": "We connect dependable drivers with established trucking companies, handling every step from recruitment through DOT-compliant onboarding.",
-      "features": [
-        {
-          "title": "Driver Recruitment & Screening",
-          "description": "Application review, CDL and medical card verification, MVR and safety history checks — all to ensure every candidate meets your standards and DOT requirements."
-        },
-        {
-          "title": "Driver Qualification File Setup",
-          "description": "Complete DQF assembly including all DOT-compliant onboarding documentation, organized and audit-ready from day one."
-        },
-        {
-          "title": "Compliance & Safety Assurance",
-          "description": "Reduced safety and audit risk through proper driver vetting, organized records, and adherence to all FMCSA regulations before a driver gets behind the wheel."
-        },
-        {
-          "title": "Tailored for Growing Fleets",
-          "description": "Whether you're an owner-operator hiring your first driver, a small fleet scaling up, or a new MC authority building your team — our process adapts to your needs for faster, compliant onboarding."
         }
       ]
     }

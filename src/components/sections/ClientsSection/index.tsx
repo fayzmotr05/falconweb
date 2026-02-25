@@ -174,22 +174,10 @@ function CaseStudyShowcase() {
     >
       <div className="relative bg-gradient-to-br from-navy-800/50 via-navy-900/50 to-navy-800/50 border border-neon-green/30 rounded-3xl p-6 sm:p-8 md:p-12 overflow-hidden">
         {/* Animated background */}
-        <motion.div
-          className="absolute top-0 right-0 w-64 h-64 bg-neon-green/10 rounded-full blur-[100px]"
-          animate={{
-            scale: [1, 1.2, 1],
-            opacity: [0.1, 0.2, 0.1],
-          }}
-          transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
+        <div
+          className="absolute top-0 right-0 w-64 h-64 bg-neon-green/10 rounded-full blur-[40px] opacity-15"
         />
-        <motion.div
-          className="absolute bottom-0 left-0 w-48 h-48 bg-neon-cyan/10 rounded-full blur-[80px]"
-          animate={{
-            scale: [1, 1.3, 1],
-            opacity: [0.1, 0.15, 0.1],
-          }}
-          transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
-        />
+        <div className="absolute bottom-0 left-0 w-48 h-48 bg-neon-cyan/10 rounded-full blur-[30px] opacity-10" />
 
         {/* Celebration particles - disabled on mobile for performance */}
         {showCelebration && !shouldReduceAnimations && (

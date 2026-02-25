@@ -37,7 +37,14 @@ export default function Card3D({
     )
   }
 
+  const lastMoveRef = useRef(0)
+
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    // Throttle to ~30fps
+    const now = Date.now()
+    if (now - lastMoveRef.current < 33) return
+    lastMoveRef.current = now
+
     if (!cardRef.current) return
 
     const rect = cardRef.current.getBoundingClientRect()
