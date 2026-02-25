@@ -2,7 +2,7 @@ import { useRef, useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { motion, useScroll, useTransform, useSpring } from 'framer-motion'
 import { gsap } from '@/animations/gsapConfig'
-import { Container, SectionWrapper, SplitText } from '@/components/common'
+import { Container, SectionWrapper } from '@/components/common'
 import { TIMELINE } from '@/constants/content'
 import { useReducedMotion } from '@/hooks/useReducedMotion'
 
@@ -228,15 +228,9 @@ export default function TimelineSection() {
             transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
             className="text-center mb-8 md:mb-10"
           >
-            <SplitText
-              as="h2"
-              animation="fadeUp"
-              type="words"
-              stagger={0.05}
-              className="text-3xl md:text-4xl lg:text-5xl font-bold text-text-primary mb-4"
-            >
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-text-primary mb-4">
               {t('timeline.title')}
-            </SplitText>
+            </h2>
             <motion.p
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}

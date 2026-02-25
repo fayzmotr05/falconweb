@@ -2,7 +2,7 @@ import { useRef } from 'react'
 import { useTranslation } from 'react-i18next'
 import { motion, useInView } from 'framer-motion'
 import { Link } from 'react-router-dom'
-import { Container, SectionWrapper, SplitText } from '@/components/common'
+import { Container, SectionWrapper } from '@/components/common'
 import { SERVICES } from '@/constants/content'
 
 // Service icon paths for SVG
@@ -116,28 +116,20 @@ export default function ServicesSection() {
 
       <Container>
         {/* Section header */}
-        <div className="text-center mb-16">
-          <SplitText
-            as="h2"
-            animation="fadeUp"
-            type="words"
-            stagger={0.05}
-            trigger="inView"
-            className="text-4xl md:text-5xl lg:text-6xl font-black mb-6"
-          >
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-100px' }}
+          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+          className="text-center mb-16"
+        >
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-black mb-6">
             {t('services.title')}
-          </SplitText>
-          <SplitText
-            type="words"
-            animation="fadeIn"
-            stagger={0.03}
-            delay={0.2}
-            trigger="inView"
-            className="text-lg md:text-xl text-text-secondary max-w-3xl mx-auto"
-          >
+          </h2>
+          <p className="text-lg md:text-xl text-text-secondary max-w-3xl mx-auto">
             {t('services.subtitle')}
-          </SplitText>
-        </div>
+          </p>
+        </motion.div>
 
         {/* Services grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">

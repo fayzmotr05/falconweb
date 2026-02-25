@@ -2,7 +2,7 @@ import { useRef, useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { motion, useInView } from 'framer-motion'
 import gsap from 'gsap'
-import { Container, SectionWrapper, AnimatedCounter, Card3D, SplitText } from '@/components/common'
+import { Container, SectionWrapper, AnimatedCounter, Card3D } from '@/components/common'
 import { STATS } from '@/constants/content'
 
 
@@ -225,15 +225,9 @@ export default function StatsSection() {
             transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
             className="text-center mb-12 md:mb-16"
           >
-            <SplitText
-              as="h2"
-              animation="fadeUp"
-              type="words"
-              stagger={0.05}
-              className="text-3xl md:text-4xl lg:text-5xl font-bold text-text-primary mb-4"
-            >
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-text-primary mb-4">
               {t('stats.title')}
-            </SplitText>
+            </h2>
             <motion.p
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
