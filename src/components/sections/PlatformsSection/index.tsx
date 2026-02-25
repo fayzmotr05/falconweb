@@ -275,15 +275,6 @@ function PlatformCard({
             }}
           />
 
-          {/* Platform logo */}
-          <div className="relative mb-4">
-            <img
-              src={platformKey === 'sba' ? '/clearpath-logo.jpg' : '/securepath-logo.svg'}
-              alt={t(`platforms.${platformKey}.title`)}
-              className="h-12 w-auto object-contain rounded-lg"
-            />
-          </div>
-
           {/* Platform badge */}
           <motion.div
             className="relative inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6"
@@ -313,10 +304,17 @@ function PlatformCard({
             </span>
           </motion.div>
 
-          {/* Title */}
-          <h3 className="relative text-3xl font-bold text-text-primary mb-3">
-            {t(`platforms.${platformKey}.title`)}
-          </h3>
+          {/* Logo + Title */}
+          <div className="relative flex items-center gap-3 mb-3">
+            <img
+              src={platformKey === 'sba' ? '/clearpath-logo.jpg' : '/securepath-logo.svg'}
+              alt={t(`platforms.${platformKey}.title`)}
+              className="h-10 w-10 object-contain rounded-lg"
+            />
+            <h3 className="text-3xl font-bold text-text-primary">
+              {t(`platforms.${platformKey}.title`)}
+            </h3>
+          </div>
           <p className="relative text-text-secondary mb-6">
             {t(`platforms.${platformKey}.description`)}
           </p>
