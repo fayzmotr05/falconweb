@@ -4,6 +4,7 @@ import { motion, useInView } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { Container, SectionWrapper } from '@/components/common'
 import { SERVICES } from '@/constants/content'
+import { isMobile, fadeInUp } from '@/lib/motion'
 
 // Service icon paths for SVG
 const iconPaths: Record<string, string[]> = {
@@ -34,9 +35,9 @@ function ServiceCard({ service, index }: { service: { key: string; icon: string 
   return (
     <motion.div
       ref={cardRef}
-      initial={{ opacity: 0, y: 50 }}
-      animate={isInView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.6, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
+      initial={isMobile ? undefined : { opacity: 0, y: 50 }}
+      animate={isMobile ? undefined : (isInView ? { opacity: 1, y: 0 } : {})}
+      transition={isMobile ? undefined : { duration: 0.6, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
     >
       <Link to={`/services/${service.key}`} className="group block h-full">
         <motion.div
@@ -117,10 +118,7 @@ export default function ServicesSection() {
       <Container>
         {/* Section header */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-100px' }}
-          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+          {...fadeInUp}
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-black mb-6">

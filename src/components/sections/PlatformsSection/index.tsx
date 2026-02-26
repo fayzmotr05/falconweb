@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next'
 import { motion, useInView } from 'framer-motion'
 import { Container, SectionWrapper, Card3D } from '@/components/common'
 import { INTEGRATIONS } from '@/constants/content'
+import { isMobile, fadeInUp, fadeIn } from '@/lib/motion'
 
 // 3D Dashboard Mockup Component
 function DashboardMockup({
@@ -243,10 +244,10 @@ function PlatformCard({
   return (
     <motion.div
       ref={cardRef}
-      initial={{ opacity: 0, y: 50, rotateY: index === 0 ? -15 : 15 }}
-      animate={isInView ? { opacity: 1, y: 0, rotateY: 0 } : {}}
-      transition={{ duration: 0.8, delay: index * 0.2, ease: [0.16, 1, 0.3, 1] }}
-      style={{ perspective: '1000px' }}
+      initial={isMobile ? undefined : { opacity: 0, y: 50, rotateY: index === 0 ? -15 : 15 }}
+      animate={isMobile ? undefined : (isInView ? { opacity: 1, y: 0, rotateY: 0 } : {})}
+      transition={isMobile ? undefined : { duration: 0.8, delay: index * 0.2, ease: [0.16, 1, 0.3, 1] }}
+      style={isMobile ? undefined : { perspective: '1000px' }}
     >
       <Card3D
         glowColor={`${accentColor}40`}
@@ -358,20 +359,14 @@ export default function PlatformsSection() {
         <Container>
           {/* Section header */}
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-100px' }}
-            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+            {...fadeInUp}
             className="text-center mb-12 md:mb-16"
           >
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-text-primary mb-4">
               {t('platforms.title')}
             </h2>
             <motion.p
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.3, duration: 0.6 }}
+              {...fadeIn}
               className="text-lg text-text-secondary max-w-2xl mx-auto"
             >
               {t('platforms.subtitle')}
@@ -386,10 +381,12 @@ export default function PlatformsSection() {
 
           {/* Integrations */}
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-100px' }}
-            transition={{ duration: 0.6, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+            {...(isMobile ? {} : {
+              initial: { opacity: 0, y: 30 },
+              whileInView: { opacity: 1, y: 0 },
+              viewport: { once: true, margin: '-100px' },
+              transition: { duration: 0.6, delay: 0.2, ease: [0.16, 1, 0.3, 1] },
+            })}
           >
             <div className="text-center mb-8">
               <h3 className="text-xl font-semibold text-text-primary mb-2">
@@ -401,10 +398,12 @@ export default function PlatformsSection() {
               {INTEGRATIONS.map((integration, index) => (
                 <motion.div
                   key={integration}
-                  initial={{ opacity: 0, scale: 0.8, y: 20 }}
-                  whileInView={{ opacity: 1, scale: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.4, delay: index * 0.05 }}
+                  {...(isMobile ? {} : {
+                    initial: { opacity: 0, scale: 0.8, y: 20 },
+                    whileInView: { opacity: 1, scale: 1, y: 0 },
+                    viewport: { once: true },
+                    transition: { duration: 0.4, delay: index * 0.05 },
+                  })}
                   whileHover={{
                     scale: 1.1,
                     y: -5,

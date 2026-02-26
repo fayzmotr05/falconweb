@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next'
 import { motion, useScroll, useTransform, useInView } from 'framer-motion'
 import { Container, SectionWrapper } from '@/components/common'
 import { VALUES } from '@/constants/content'
+import { isMobile, fadeInUp, fadeIn } from '@/lib/motion'
 
 // Icon paths for stroke animation
 const iconPaths: Record<string, string[]> = {
@@ -39,14 +40,16 @@ function ValueCard({
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 50, scale: 0.8 }}
-      whileInView={{ opacity: 1, y: 0, scale: 1 }}
-      viewport={{ once: true, margin: '-50px' }}
-      transition={{
-        duration: 0.8,
-        delay: index * 0.15,
-        ease: [0.16, 1, 0.3, 1],
-      }}
+      {...(isMobile ? {} : {
+        initial: { opacity: 0, y: 50, scale: 0.8 },
+        whileInView: { opacity: 1, y: 0, scale: 1 },
+        viewport: { once: true, margin: '-50px' },
+        transition: {
+          duration: 0.8,
+          delay: index * 0.15,
+          ease: [0.16, 1, 0.3, 1],
+        },
+      })}
       className="group text-center relative"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
@@ -83,10 +86,12 @@ function ValueCard({
               strokeLinecap="round"
               strokeLinejoin="round"
               strokeWidth={1.5}
-              initial={{ pathLength: 0 }}
-              whileInView={{ pathLength: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 1.5, delay: index * 0.2 + 0.3, ease: 'easeInOut' }}
+              {...(isMobile ? {} : {
+                initial: { pathLength: 0 },
+                whileInView: { pathLength: 1 },
+                viewport: { once: true },
+                transition: { duration: 1.5, delay: index * 0.2 + 0.3, ease: 'easeInOut' },
+              })}
             />
           ))}
         </svg>
@@ -124,10 +129,12 @@ function ValueCard({
       {/* Description */}
       <motion.p
         className="text-text-secondary text-sm leading-relaxed"
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
-        transition={{ delay: index * 0.15 + 0.4, duration: 0.6 }}
+        {...(isMobile ? {} : {
+          initial: { opacity: 0 },
+          whileInView: { opacity: 1 },
+          viewport: { once: true },
+          transition: { delay: index * 0.15 + 0.4, duration: 0.6 },
+        })}
       >
         {t(`mission.values.${value.key}.description`)}
       </motion.p>
@@ -140,10 +147,12 @@ function ValueCard({
           color: accentColor,
           border: `1px solid ${accentColor}30`,
         }}
-        initial={{ scale: 0, opacity: 0 }}
-        whileInView={{ scale: 1, opacity: 0.5 }}
-        viewport={{ once: true }}
-        transition={{ delay: index * 0.15 + 0.6, type: 'spring' }}
+        {...(isMobile ? {} : {
+          initial: { scale: 0, opacity: 0 },
+          whileInView: { scale: 1, opacity: 0.5 },
+          viewport: { once: true },
+          transition: { delay: index * 0.15 + 0.6, type: 'spring' },
+        })}
       >
         {(index + 1).toString().padStart(2, '0')}
       </motion.div>
@@ -237,20 +246,14 @@ export default function MissionSection() {
         <Container>
           {/* Section header */}
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-100px' }}
-            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+            {...fadeInUp}
             className="text-center mb-16"
           >
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-text-primary mb-4">
               {t('mission.title')}
             </h2>
             <motion.p
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.3, duration: 0.6 }}
+              {...fadeIn}
               className="text-lg text-text-secondary max-w-2xl mx-auto"
             >
               {t('mission.subtitle')}
@@ -278,10 +281,12 @@ export default function MissionSection() {
           {/* Bottom accent */}
           <motion.div
             className="mt-16 flex justify-center"
-            initial={{ opacity: 0, scale: 0.8 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.8, duration: 0.6 }}
+            {...(isMobile ? {} : {
+              initial: { opacity: 0, scale: 0.8 },
+              whileInView: { opacity: 1, scale: 1 },
+              viewport: { once: true },
+              transition: { delay: 0.8, duration: 0.6 },
+            })}
           >
             <div className="flex items-center gap-4">
               {valueColors.map((color, i) => (

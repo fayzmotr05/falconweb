@@ -4,6 +4,7 @@ import { motion, useInView, AnimatePresence } from 'framer-motion'
 import { Container, SectionWrapper } from '@/components/common'
 import { ADVANTAGES } from '@/constants/content'
 import { useReducedMotion } from '@/hooks/useReducedMotion'
+import { isMobile, fadeInUp, fadeIn } from '@/lib/motion'
 
 // Icon paths for stroke animation
 const iconPaths: Record<string, string[]> = {
@@ -98,14 +99,16 @@ function ChecklistItem({
   return (
     <motion.div
       ref={itemRef}
-      initial={{ opacity: 0, x: -50 }}
-      whileInView={{ opacity: 1, x: 0 }}
-      viewport={{ once: true, margin: '-50px' }}
-      transition={{
-        duration: 0.6,
-        delay: index * 0.1,
-        ease: [0.16, 1, 0.3, 1],
-      }}
+      {...(isMobile ? {} : {
+        initial: { opacity: 0, x: -50 },
+        whileInView: { opacity: 1, x: 0 },
+        viewport: { once: true, margin: '-50px' },
+        transition: {
+          duration: 0.6,
+          delay: index * 0.1,
+          ease: [0.16, 1, 0.3, 1],
+        },
+      })}
       className="relative"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
@@ -170,10 +173,12 @@ function ChecklistItem({
                     strokeLinecap="round"
                     strokeLinejoin="round"
                     strokeWidth={1.5}
-                    initial={{ pathLength: 0 }}
-                    whileInView={{ pathLength: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 1, delay: index * 0.1 + 0.3 }}
+                    {...(isMobile ? {} : {
+                      initial: { pathLength: 0 },
+                      whileInView: { pathLength: 1 },
+                      viewport: { once: true },
+                      transition: { duration: 1, delay: index * 0.1 + 0.3 },
+                    })}
                   />
                 ))}
               </svg>
@@ -351,20 +356,14 @@ export default function WhyUsSection() {
         <Container size="md">
           {/* Section header */}
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-100px' }}
-            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+            {...fadeInUp}
             className="text-center mb-8"
           >
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-text-primary mb-4">
               {t('whyUs.title')}
             </h2>
             <motion.p
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.3, duration: 0.6 }}
+              {...fadeIn}
               className="text-lg text-text-secondary max-w-2xl mx-auto"
             >
               {t('whyUs.subtitle')}

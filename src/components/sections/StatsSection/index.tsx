@@ -4,6 +4,7 @@ import { motion, useInView } from 'framer-motion'
 import gsap from 'gsap'
 import { Container, SectionWrapper, AnimatedCounter, Card3D } from '@/components/common'
 import { STATS } from '@/constants/content'
+import { isMobile, fadeInUp, fadeIn } from '@/lib/motion'
 
 
 // Animated SVG icon component with stroke animation
@@ -106,9 +107,9 @@ function StatCard({ stat, index }: { stat: { readonly key: string; readonly valu
   return (
     <motion.div
       ref={cardRef}
-      initial={{ opacity: 0, y: 30 }}
-      animate={isInView ? { opacity: 1, y: 0 } : {}}
-      transition={{
+      initial={isMobile ? undefined : { opacity: 0, y: 30 }}
+      animate={isMobile ? undefined : (isInView ? { opacity: 1, y: 0 } : {})}
+      transition={isMobile ? undefined : {
         duration: 0.6,
         delay: index * 0.1,
         ease: [0.16, 1, 0.3, 1],
@@ -193,9 +194,9 @@ function StatCard({ stat, index }: { stat: { readonly key: string; readonly valu
           {/* Label */}
           <motion.div
             className="text-text-secondary text-sm md:text-base font-medium"
-            initial={{ opacity: 0, y: 10 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ delay: index * 0.15 + 0.5, duration: 0.5 }}
+            initial={isMobile ? undefined : { opacity: 0, y: 10 }}
+            animate={isMobile ? undefined : (isInView ? { opacity: 1, y: 0 } : {})}
+            transition={isMobile ? undefined : { delay: index * 0.15 + 0.5, duration: 0.5 }}
           >
             {t(`stats.${stat.key}`)}
           </motion.div>
@@ -217,22 +218,16 @@ export default function StatsSection() {
           <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-neon-purple/5 rounded-full blur-[40px]" />
         </div>
         <Container>
-          {/* Section header with split text */}
+          {/* Section header */}
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-100px' }}
-            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+            {...fadeInUp}
             className="text-center mb-12 md:mb-16"
           >
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-text-primary mb-4">
               {t('stats.title')}
             </h2>
             <motion.p
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.3, duration: 0.6 }}
+              {...fadeIn}
               className="text-lg text-text-secondary max-w-2xl mx-auto"
             >
               {t('stats.subtitle')}

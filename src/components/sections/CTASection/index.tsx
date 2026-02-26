@@ -5,6 +5,7 @@ import { motion, useInView, AnimatePresence, useMotionValue, useSpring } from 'f
 import { Container, SectionWrapper } from '@/components/common'
 import { COMPANY_INFO } from '@/constants/content'
 import { useReducedMotion } from '@/hooks/useReducedMotion'
+import { isMobile, fadeInUp, fadeIn } from '@/lib/motion'
 
 interface FormData {
   name: string
@@ -151,9 +152,9 @@ function ContactCard({
       href={href}
       target={href.startsWith('http') ? '_blank' : undefined}
       rel={href.startsWith('http') ? 'noopener noreferrer' : undefined}
-      initial={{ opacity: 0, y: 30, scale: 0.9 }}
-      animate={isInView ? { opacity: 1, y: 0, scale: 1 } : {}}
-      transition={{ duration: 0.6, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
+      initial={isMobile ? undefined : { opacity: 0, y: 30, scale: 0.9 }}
+      animate={isMobile ? undefined : (isInView ? { opacity: 1, y: 0, scale: 1 } : {})}
+      transition={isMobile ? undefined : { duration: 0.6, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       className="block relative overflow-hidden"
@@ -428,20 +429,14 @@ export default function CTASection() {
           <div className="relative">
             {/* Section header */}
             <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-100px' }}
-              transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+              {...fadeInUp}
               className="text-center mb-16"
             >
               <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-text-primary mb-4">
                 {t('cta.title')}
               </h2>
               <motion.p
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.3, duration: 0.6 }}
+                {...fadeIn}
                 className="text-lg text-text-secondary max-w-2xl mx-auto"
               >
                 {t('cta.subtitle')}
@@ -452,9 +447,9 @@ export default function CTASection() {
               {/* Contact Form */}
               <motion.div
                 ref={formRef}
-                initial={{ opacity: 0, y: 50 }}
-                animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                initial={isMobile ? undefined : { opacity: 0, y: 50 }}
+                animate={isMobile ? undefined : (isInView ? { opacity: 1, y: 0 } : {})}
+                transition={isMobile ? undefined : { duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
                 className="relative"
               >
                 {/* Success confetti */}
@@ -639,10 +634,12 @@ export default function CTASection() {
 
                 {/* Trust indicators */}
                 <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.4, duration: 0.6 }}
+                  {...(isMobile ? {} : {
+                    initial: { opacity: 0, y: 20 },
+                    whileInView: { opacity: 1, y: 0 },
+                    viewport: { once: true },
+                    transition: { delay: 0.4, duration: 0.6 },
+                  })}
                   className="flex items-center justify-center gap-6 pt-6"
                 >
                   {['24/7', 'USA', 'Pro'].map((badge) => (

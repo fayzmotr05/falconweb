@@ -5,6 +5,7 @@ import { gsap } from '@/animations/gsapConfig'
 import { Container, SectionWrapper } from '@/components/common'
 import { TIMELINE } from '@/constants/content'
 import { useReducedMotion } from '@/hooks/useReducedMotion'
+import { isMobile, fadeInUp, fadeIn } from '@/lib/motion'
 
 // Milestone Card Component
 function MilestoneCard({
@@ -35,13 +36,13 @@ function MilestoneCard({
     <motion.div
       ref={cardRef}
       className={`relative ${index % 2 === 0 ? 'md:pr-16 md:text-right' : 'md:pl-16'}`}
-      initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
-      animate={{
+      initial={isMobile ? undefined : { opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
+      animate={isMobile ? undefined : {
         opacity: isActive || isPast ? 1 : 0.3,
         x: 0,
         scale: isActive ? 1.02 : 1,
       }}
-      transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+      transition={isMobile ? undefined : { duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
     >
       <div
         className={`relative bg-navy-800/50 backdrop-blur-sm border rounded-2xl p-4 sm:p-6 md:p-8 overflow-hidden transition-all duration-500 ${
@@ -222,20 +223,14 @@ export default function TimelineSection() {
         <Container>
           {/* Section header */}
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+            {...fadeInUp}
             className="text-center mb-8 md:mb-10"
           >
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-text-primary mb-4">
               {t('timeline.title')}
             </h2>
             <motion.p
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.3, duration: 0.6 }}
+              {...fadeIn}
               className="text-lg text-text-secondary max-w-2xl mx-auto"
             >
               {t('timeline.subtitle')}

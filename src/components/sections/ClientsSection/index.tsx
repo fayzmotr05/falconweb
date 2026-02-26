@@ -4,6 +4,7 @@ import { motion, useInView } from 'framer-motion'
 import { Container, SectionWrapper, AnimatedCounter, Card3D } from '@/components/common'
 import { CLIENT_SEGMENTS } from '@/constants/content'
 import { useReducedMotion } from '@/hooks/useReducedMotion'
+import { isMobile, fadeInUp, fadeIn } from '@/lib/motion'
 
 // Professional detailed SVG icons with multiple paths for visual richness
 const iconPaths: Record<string, string[]> = {
@@ -89,15 +90,17 @@ function ClientSegmentCard({
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 30, rotateX: -15 }}
-      whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
-      viewport={{ once: true, margin: '-50px' }}
-      transition={{
-        duration: 0.6,
-        delay: index * 0.15,
-        ease: [0.16, 1, 0.3, 1],
-      }}
-      style={{ perspective: '1000px' }}
+      {...(isMobile ? {} : {
+        initial: { opacity: 0, y: 30, rotateX: -15 },
+        whileInView: { opacity: 1, y: 0, rotateX: 0 },
+        viewport: { once: true, margin: '-50px' },
+        transition: {
+          duration: 0.6,
+          delay: index * 0.15,
+          ease: [0.16, 1, 0.3, 1],
+        },
+      })}
+      style={isMobile ? undefined : { perspective: '1000px' }}
     >
       <Card3D glowColor={`${accentColor}40`} tiltIntensity={8} flipOnView={false}>
         <div
@@ -126,14 +129,16 @@ function ClientSegmentCard({
                   strokeLinejoin="round"
                   // Main structural paths (first 3) are thicker, details are thinner
                   strokeWidth={i < 3 ? 1.5 : 1}
-                  initial={{ pathLength: 0, opacity: 0 }}
-                  whileInView={{ pathLength: 1, opacity: 1 }}
-                  viewport={{ once: true }}
-                  transition={{
-                    duration: 0.6 + i * 0.08,
-                    delay: index * 0.15 + i * 0.1,
-                    ease: 'easeOut'
-                  }}
+                  {...(isMobile ? {} : {
+                    initial: { pathLength: 0, opacity: 0 },
+                    whileInView: { pathLength: 1, opacity: 1 },
+                    viewport: { once: true },
+                    transition: {
+                      duration: 0.6 + i * 0.08,
+                      delay: index * 0.15 + i * 0.1,
+                      ease: 'easeOut'
+                    },
+                  })}
                 />
               ))}
             </svg>
@@ -165,9 +170,9 @@ function CaseStudyShowcase() {
   return (
     <motion.div
       ref={ref}
-      initial={{ opacity: 0, y: 50, scale: 0.95 }}
-      animate={isInView ? { opacity: 1, y: 0, scale: 1 } : {}}
-      transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+      initial={isMobile ? undefined : { opacity: 0, y: 50, scale: 0.95 }}
+      animate={isMobile ? undefined : (isInView ? { opacity: 1, y: 0, scale: 1 } : {})}
+      transition={isMobile ? undefined : { duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
       onAnimationComplete={() => {
         if (isInView) setTimeout(() => setShowCelebration(true), 1500)
       }}
@@ -235,9 +240,9 @@ function CaseStudyShowcase() {
           <div className="flex flex-col md:flex-row items-center justify-center gap-6 md:gap-12">
             <motion.div
               className="text-center"
-              initial={{ x: -50, opacity: 0 }}
-              animate={isInView ? { x: 0, opacity: 1 } : {}}
-              transition={{ delay: 0.3, duration: 0.6 }}
+              initial={isMobile ? undefined : { x: -50, opacity: 0 }}
+              animate={isMobile ? undefined : (isInView ? { x: 0, opacity: 1 } : {})}
+              transition={isMobile ? undefined : { delay: 0.3, duration: 0.6 }}
             >
               <div className="text-4xl md:text-5xl font-bold text-red-400 line-through opacity-60">
                 <AnimatedCounter end={40000} prefix="$" duration={2000} scramble={true} />
@@ -247,8 +252,8 @@ function CaseStudyShowcase() {
 
             <motion.div
               className="flex items-center"
-              animate={isInView ? { scale: [0, 1.2, 1] } : {}}
-              transition={{ delay: 1, duration: 0.5 }}
+              animate={isMobile ? undefined : (isInView ? { scale: [0, 1.2, 1] } : {})}
+              transition={isMobile ? undefined : { delay: 1, duration: 0.5 }}
             >
               <svg className="w-10 h-10 text-neon-green" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
@@ -257,9 +262,9 @@ function CaseStudyShowcase() {
 
             <motion.div
               className="text-center"
-              initial={{ x: 50, opacity: 0 }}
-              animate={isInView ? { x: 0, opacity: 1 } : {}}
-              transition={{ delay: 0.5, duration: 0.6 }}
+              initial={isMobile ? undefined : { x: 50, opacity: 0 }}
+              animate={isMobile ? undefined : (isInView ? { x: 0, opacity: 1 } : {})}
+              transition={isMobile ? undefined : { delay: 0.5, duration: 0.6 }}
             >
               <motion.div
                 className="text-4xl md:text-5xl font-bold text-neon-green"
@@ -273,9 +278,9 @@ function CaseStudyShowcase() {
 
             <motion.div
               className="mt-4 md:mt-0 md:ml-8"
-              initial={{ scale: 0, opacity: 0 }}
-              animate={isInView ? { scale: 1, opacity: 1 } : {}}
-              transition={{ delay: 1.2, duration: 0.5, type: 'spring' }}
+              initial={isMobile ? undefined : { scale: 0, opacity: 0 }}
+              animate={isMobile ? undefined : (isInView ? { scale: 1, opacity: 1 } : {})}
+              transition={isMobile ? undefined : { delay: 1.2, duration: 0.5, type: 'spring' }}
             >
               <motion.div
                 className="px-6 py-3 bg-neon-green/20 border border-neon-green/40 rounded-xl"
@@ -304,20 +309,14 @@ export default function ClientsSection() {
       <Container>
         {/* Section header */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-100px' }}
-          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+          {...fadeInUp}
           className="text-center mb-12 md:mb-16"
         >
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-text-primary mb-4">
             {t('clients.title')}
           </h2>
           <motion.p
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.3, duration: 0.6 }}
+            {...fadeIn}
             className="text-lg text-text-secondary max-w-2xl mx-auto"
           >
             {t('clients.subtitle')}
